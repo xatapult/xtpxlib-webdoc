@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../xsd/docbook/docbook.nvdl" type="application/xml" schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xdoc="http://www.xtpxlib.nl/ns/xdoc" version="5.0">
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <info>
+    <title>xtpxlib</title>
+    <subtitle>An XML processing library</subtitle>
+    <pubdate>{$DATE}</pubdate>
+    <author>
+      <personname>Erik&#160;Siegel</personname>
+    </author>
+    <orgname>Xatapult</orgname>
+  </info>
+
+  <!-- ================================================================== -->
+
+  <preface>
+    <title>XML processing with <emphasis role="bold"><code>xtpxlib</code></emphasis></title>
+
+    <!--<xdoc:dump-parameters type="table"/>-->
+
+    <xdoc:transform href="../../transforms/generate-basic-component-information-header.xsl" xtpxlib-generic="true"/>
+
+    <para><emphasis role="bold"><code>{$component-name}</code></emphasis> is part of the <emphasis role="bold"><code>{$library-name}</code></emphasis>
+      library. <emphasis role="bold"><code>{$library-name}</code></emphasis> contains software for processing XML, using languages like XSLT and
+      XProc. It consists of several separate components, named <code>{$library-name}-*</code>. Everything can be found on GitHub (<link
+        xlink:href="{$owner-company-github}"/>). The core component of <code>{$library-name}</code> is <link
+        xlink:href="{$owner-company-github}/{$core-component-name}"><code>{$core-component-name}</code></link>. Most components will be accompanied by
+      a GitHub pages documentation site (<link xlink:href="TBD"/>).</para>
+
+  </preface>
+  
+</book>
+<!-- ================================================================== -->

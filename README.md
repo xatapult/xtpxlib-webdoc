@@ -7,8 +7,8 @@
 
 **`xtpxlib-webdoc`** is an *internal* component in the **`xtpxlib`** library. It takes care of:
     
-- The main **`xtpxlib`** documentation website.
-- Some internal scripts and documentation for publishing and releasing components.
+* The main **`xtpxlib`** documentation website.
+* Some internal scripts and documentation for publishing and releasing components.
   
 
 ----------
@@ -24,5 +24,5 @@ Git site: [`https://github.com/xatapult/xtpxlib-webdoc`](https://github.com/xata
 Dependent components: xtpxlib-common; xtpxlib-xdoc
 
 This component depends on:
-- `xtpxlib-xdoc` (Xatapult XML Library - xdoc component)
-- [`xtpxlib-common`](http://www.xatapult.nl) (Xatapult XML Library - Common component)
+* `xtpxlib-xdoc` (Xatapult XML Library - xdoc component)
+* [`xtpxlib-common`](http://www.xatapult.nl) (Xatapult XML Library - Common component)

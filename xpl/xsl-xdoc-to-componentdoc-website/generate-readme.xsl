@@ -40,7 +40,7 @@
         <xsl:variable name="documentation-uri" as="xs:string?" select="$component-information/xwebdoc:documentation-uri"/>
         <xsl:variable name="component-link" as="xs:string"
           select="if (normalize-space($documentation-uri) ne '') then local:siteref(., $documentation-uri) else local:code(.)"/>
-        <xsl:sequence select="'- ' || $component-link || ' (' || $component-information/xwebdoc:title || ')'"/>
+        <xsl:sequence select="'* ' || $component-link || ' (' || $component-information/xwebdoc:title || ')'"/>
       </xsl:for-each>
     </xsl:if>
   </xsl:variable>

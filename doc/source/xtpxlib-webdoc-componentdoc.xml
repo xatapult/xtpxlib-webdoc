@@ -18,20 +18,71 @@
   <!-- ================================================================== -->
 
   <preface>
-    <title>XML processing with <emphasis role="bold"><code>xtpxlib</code></emphasis></title>
+    <title>XML processing <emphasis role="bold"><code>xtpxlib</code></emphasis> library</title>
+
+    <xdoc:transform href="../../transforms/generate-basic-component-information-header.xpl" component-name="xtpxlib-webdoc" xtpxlib-generic="true"/>
+
+    <para><emphasis role="bold"><code>xtpxlib</code></emphasis> is an open source library containing software for processing XML, using languages like
+      XSLT and XProc. It consists of several separate components, all named <code>xtpxlib-*</code>. Everything can be found on GitHub (<link
+        role="newpage" xlink:href="{$owner-company-git-site-uri}"/>).</para>
+
+    <para role="halfbreak"/>
+    <para role="keep-with-next"><emphasis role="bold"><code>xtpxlib</code></emphasis> consists of the following components:</para>
+    <xdoc:transform href="../../transforms/generate-components-list.xsl" global-parameters-uri="../data/componentdoc-global-parameters.xml"/>
 
     <!--<xdoc:dump-parameters type="table"/>-->
 
-    <xdoc:transform href="../../transforms/generate-basic-component-information-header.xsl" xtpxlib-generic="true"/>
-
-    <para><emphasis role="bold"><code>{$component-name}</code></emphasis> is part of the <emphasis role="bold"><code>{$library-name}</code></emphasis>
-      library. <emphasis role="bold"><code>{$library-name}</code></emphasis> contains software for processing XML, using languages like XSLT and
-      XProc. It consists of several separate components, named <code>{$library-name}-*</code>. Everything can be found on GitHub (<link
-        xlink:href="{$owner-company-github}"/>). The core component of <code>{$library-name}</code> is <link
-        xlink:href="{$owner-company-github}/{$core-component-name}"><code>{$core-component-name}</code></link>. Most components will be accompanied by
-      a GitHub pages documentation site (<link xlink:href="TBD"/>).</para>
-
   </preface>
-  
+
+  <!-- ================================================================== -->
+
+  <chapter>
+    <title>Usage</title>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <sect1>
+      <title>Installing <emphasis role="bold"><code>xtpxlib</code></emphasis> components</title>
+
+      <para>To install an <emphasis role="bold"><code>xtpxlib</code></emphasis> component you can do one of the following:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Clone its GitHub repository to some appropriate location on disk. The <code>master</code> branch will always contain the latest stable
+            version.</para>
+        </listitem>
+        <listitem>
+          <para>Or download the latest release zip from its git website (releases page) and unpack it somewhere.</para>
+        </listitem>
+      </itemizedlist>
+
+    </sect1>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <sect1>
+      <title>Running <emphasis role="bold"><code>xtpxlib</code></emphasis> components</title>
+
+      <para><emphasis role="bold"><code>xtpxlib</code></emphasis> consists mainly of XProc (1.0) pipelines and XSLT (2.0 and 3.0) stylesheets. To
+        run these you'll need:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>To run the XProc pipelines use <link role="newpage" xlink:href="https://xmlcalabash.com/">XML&#160;Calabash</link> Xproc 1.0
+            processor. This library uses several of its non-standard extensions, another XProc processor is therefore probably not usable.</para>
+        </listitem>
+        <listitem>
+          <para>To run XSLT stylesheets the <link role="newpage" xlink:href="http://www.saxonica.com">Saxon</link> processor is preferred. In most
+            cases the (open source) HE (Home Edition) version will be sufficient. If not a PE (Professional Edition) license is necessary.</para>
+        </listitem>
+        <listitem>
+          <para>As an alternative run the software from within the <link role="newpage" xlink:href="https://www.oxygenxml.com">oXygen XML</link>
+            IDE.</para>
+        </listitem>
+      </itemizedlist>
+    </sect1>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  </chapter>
+
 </book>
-<!-- ================================================================== -->

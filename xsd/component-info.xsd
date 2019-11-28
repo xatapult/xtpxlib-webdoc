@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.xtpxlib.nl/ns/webdoc"
+  xmlns:webdoc="http://www.xtpxlib.nl/ns/webdoc">
+  <xs:element name="component-info">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="releases">
+          <xs:annotation>
+            <xs:documentation>Release information, most recent one first.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="release">
+                <xs:annotation>
+                  <xs:documentation>Information about a release. Contents is a short release description. Can contain simple Markdown.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="webdoc:t-markdown">
+                      <xs:attribute name="version" use="required">
+                        <xs:annotation>
+                          <xs:documentation>Version of this release in x.y[.z] format. x and y must be numeric, z alphanumeric.</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:pattern value="[0-9]+\.[0-9]+(\.[a-zA-Z0-9]+)?"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="date" type="xs:date" use="required">
+                        <xs:annotation>
+                          <xs:documentation>Release date of this version</xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dependencies">
+          <xs:annotation>
+            <xs:documentation>Dependencies for this component</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+              <xs:element name="component">
+                <xs:annotation>
+                  <xs:documentation>Dependency on an component. This component must have a component-info.xml itself.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attributeGroup ref="webdoc:ag-component-name">
+                    <xs:annotation>
+                      <xs:documentation>Name of the component that this component depends on (e.g. xtpxlib-common).</xs:documentation>
+                    </xs:annotation>
+                  </xs:attributeGroup>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="title" type="webdoc:t-non-empty-string">
+          <xs:annotation>
+            <xs:documentation>Short title for this component (used in headers etc.).</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="summary">
+          <xs:annotation>
+            <xs:documentation>A short summary of the functionality of the component. Can contain simple Markdown.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="webdoc:t-markdown" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+                <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="skip"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="documentation-uri" type="xs:anyURI">
+          <xs:annotation>
+            <xs:documentation>The URI of the documentation site for this component (if any).</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="git-uri" type="webdoc:t-non-empty-string">
+          <xs:annotation>
+            <xs:documentation>The URI of the GIT repository (e.g. git@github.com:xatapult/xtpxlib-webdoc.git).</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="git-site-uri" type="xs:anyURI">
+          <xs:annotation>
+            <xs:documentation>The URI of the GIT site for this component (e.g. https://github.com/xatapult/xtpxlib-webdoc).</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="webdoc:ag-component-name">
+        <xs:annotation>
+          <xs:documentation>Name of the component (e.g. xtpxlib-webdoc).</xs:documentation>
+        </xs:annotation>
+      </xs:attributeGroup>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="ag-component-name">
+    <xs:attribute name="name" type="webdoc:t-component-name" use="required"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="t-component-name">
+    <xs:annotation>
+      <xs:documentation>Name of a component</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1">
+        <xs:annotation>
+          <xs:documentation>Name of a component</xs:documentation>
+        </xs:annotation>
+      </xs:minLength>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="t-name">
+    <xs:annotation>
+      <xs:documentation>Non-empty string containing no whitespace.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:pattern value="\S+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="t-markdown">
+    <xs:annotation>
+      <xs:documentation>A string that can contain simple Markdown style markup.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="t-non-empty-string">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

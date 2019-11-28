@@ -11,3 +11,13 @@ div.sidebar, div.warning, div.note {
   border: thin black solid;
   padding: 10px;
 }
+
+p.bridgehead {
+  font-weight: bold;
+  font-size: 120%;
+  border-top: thin solid lightgrey;
+}
+
+span.italic {
+  font-style: italic;
+}

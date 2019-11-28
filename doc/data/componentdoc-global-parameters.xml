@@ -4,8 +4,16 @@
   <!-- ================================================================== -->
   <!--~
     TBD
+    
+    All mandatory!
   -->
   <!-- ================================================================== -->
+  
+  <parameter name="active-components">
+    <value>xtpxlib-common</value>
+    <value>xtpxlib-xdoc</value>
+    <value>xtpxlib-webdoc</value>
+  </parameter>
   
   <parameter name="owner-company-name">
     <value>Xatapult&#160;Content&#160;Engineering</value>
@@ -19,7 +27,7 @@
     <value>+31&#160;6&#160;53260792</value>
   </parameter>
   
-  <parameter name="owner-company-github">
+  <parameter name="owner-company-git-site-uri">
     <value>https://github.com/xatapult</value>
   </parameter>
   
@@ -31,12 +39,8 @@
     <value>erik@xatapult.com</value>
   </parameter>
   
-  <parameter name="library-name">
-    <value>xtpxlib</value>
+  <parameter name="license">
+    <value>GNU GENERAL PUBLIC LICENSE - Version 3, 29 June 2007</value>
   </parameter>
   
-  <parameter name="core-component-name">
-    <value>xtpxlib-common</value>
-  </parameter>
-
 </parameters>

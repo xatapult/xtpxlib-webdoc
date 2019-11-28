@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component-info xmlns="http://www.xtpxlib.nl/ns/webdoc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace" xsi:schemaLocation="http://www.xtpxlib.nl/ns/webdoc xsd/component-info.xsd" name="xtpxlib-webdoc">
+
+  <releases>
+    <release version="0.0" date="2019-11-28">
+      Development of `xtpxlib-webdoc`.
+    </release>
+  </releases>
+
+  <dependencies>
+    <component name="xtpxlib-common"/>
+    <component name="xtpxlib-xdoc"/>
+    <!-- + container! -->
+  </dependencies>
+
+  <title>Xatapult XML Library - Common website + GitHub pages generator software</title>
+  <summary xml:space="preserve">
+**`xtpxlib-webdoc`** is an *internal* component in the **`xtpxlib`** library. It takes care of:
+    
+- The main **`xtpxlib`** documentation website.
+- Some internal scripts and documentation for publishing and releasing components.
+  </summary>
+  <documentation-uri>http://www.xatapult.nl</documentation-uri>
+
+  <git-uri>git@github.com:xatapult/xtpxlib-webdoc.git</git-uri>
+  <git-site-uri>https://github.com/xatapult/xtpxlib-webdoc</git-site-uri>
+
+</component-info>

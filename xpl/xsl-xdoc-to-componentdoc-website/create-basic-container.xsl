@@ -15,6 +15,7 @@
 
   <xsl:mode on-no-match="fail"/>
   <xsl:mode name="mode-create-contents" on-no-match="shallow-copy"/>
+  <xsl:mode name="mode-remove-comments" on-no-match="shallow-copy"/>
 
   <!-- ================================================================== -->
   <!-- PARAMETERS: -->
@@ -28,7 +29,7 @@
   <xsl:variable name="template" as="document-node()">
     <xsl:choose>
       <xsl:when test="doc-available($href-componentdoc-website-template)">
-        <xsl:sequence select="doc($href-componentdoc-website-template)"/>
+        <xsl:apply-templates select="doc($href-componentdoc-website-template)" mode="mode-remove-comments"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:call-template name="xtlc:raise-error">
@@ -95,6 +96,13 @@
       <!-- Also copy anything that was already in the body: -->
       <xsl:copy-of select="node()"/>
     </xsl:copy>
+  </xsl:template>
+
+  <!-- ================================================================== -->
+  <!-- REMOVE COMMENTS: -->
+
+  <xsl:template match="comment()" mode="mode-remove-comments">
+    <!-- Remove -->
   </xsl:template>
 
   <!-- ================================================================== -->

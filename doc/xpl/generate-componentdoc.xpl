@@ -3,7 +3,7 @@
   exclude-inline-prefixes="#all">
 
   <p:documentation>
-    TBD
+    Pipeline to create the documentation for this component.
   </p:documentation>
 
   <!-- ================================================================== -->

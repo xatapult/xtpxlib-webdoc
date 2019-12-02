@@ -2,17 +2,20 @@
 <?xml-model href="../../xsd/docbook/docbook.nvdl" type="application/xml" schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xdoc="http://www.xtpxlib.nl/ns/xdoc" version="5.0">
-
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- ================================================================== -->
+  <!--~
+    xdoc source for the main website of xtpxlib.
+  -->
+  <!-- ================================================================== -->
 
   <info>
     <title>xtpxlib</title>
     <subtitle>An XML processing library</subtitle>
     <pubdate>{$DATE}</pubdate>
     <author>
-      <personname>Erik&#160;Siegel</personname>
+      <personname>{$author-name}</personname>
     </author>
-    <orgname>Xatapult</orgname>
+    <orgname>{$owner-company-name}</orgname>
   </info>
 
   <!-- ================================================================== -->
@@ -62,8 +65,8 @@
     <sect1>
       <title>Running <emphasis role="bold"><code>xtpxlib</code></emphasis> components</title>
 
-      <para><emphasis role="bold"><code>xtpxlib</code></emphasis> consists mainly of XProc (1.0) pipelines and XSLT (2.0 and 3.0) stylesheets. To
-        run these you'll need:</para>
+      <para><emphasis role="bold"><code>xtpxlib</code></emphasis> consists mainly of XProc (1.0) pipelines and XSLT (2.0 and 3.0) stylesheets. To run
+        these you'll need:</para>
 
       <itemizedlist>
         <listitem>

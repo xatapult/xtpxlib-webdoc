@@ -5,7 +5,9 @@
   xmlns:xtlc="http://www.xtpxlib.nl/ns/common" xmlns:xwebdoc="http://www.xtpxlib.nl/ns/webdoc" exclude-result-prefixes="#all" expand-text="true">
   <!-- ================================================================== -->
   <!--~ 
-       TBD
+    This xdoc transform looks at the global parameters file, parameter `active-components`. Creates a table with the active components overview.
+    
+    The URI of the global parameters file must be present as `@global-parameters-uri` on the `xdoc:transform` element.
   -->
   <!-- ================================================================== -->
   <!-- SETUP: -->

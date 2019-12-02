@@ -3,13 +3,15 @@
  xsi:noNamespaceSchemaLocation="../../../xtpxlib-common/xsd/parameters.xsd">
   <!-- ================================================================== -->
   <!--~
-    TBD
-    
-    All mandatory!
+    These are the global parameters (meaning they're the same for all components) used in generating the component's 
+    documentation pages by `../../xpl/xdoc-to-componentdoc-website.xpl`.
   -->
   <!-- ================================================================== -->
   
   <parameter name="active-components">
+    <!-- This is a list of all currently active xtpxlib components. It is used to generate the component overview by
+      ../../transforms/generate-components-list.xsl
+    -->
     <value>xtpxlib-common</value>
     <value>xtpxlib-xdoc</value>
     <value>xtpxlib-webdoc</value>

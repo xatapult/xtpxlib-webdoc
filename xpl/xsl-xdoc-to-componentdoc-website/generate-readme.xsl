@@ -60,7 +60,7 @@
 
 {$line} 
 
-{$component-information/xwebdoc:summary}
+{string-join(xtlc:text2lines(string($component-information/xwebdoc:summary), true(), true()), '&#10;')}
 
 {$line}
 

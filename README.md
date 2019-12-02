@@ -4,12 +4,10 @@
 
 ---------- 
 
-
 **`xtpxlib-webdoc`** is an *internal* component in the **`xtpxlib`** library. It takes care of:
-    
+
 * The main **`xtpxlib`** documentation website.
 * Some internal scripts and documentation for publishing and releasing components.
-  
 
 ----------
 

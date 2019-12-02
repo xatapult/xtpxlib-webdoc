@@ -27,15 +27,22 @@
 
     <para><emphasis role="bold"><code>xtpxlib</code></emphasis> is an open source library containing software for processing XML, using languages like
       XSLT and XProc. It consists of several separate components, all named <code>xtpxlib-*</code>. Everything can be found on GitHub (<link
-        role="newpage" xlink:href="{$owner-company-git-site-uri}"/>).</para>
-
-    <para role="halfbreak"/>
-    <para role="keep-with-next"><emphasis role="bold"><code>xtpxlib</code></emphasis> consists of the following components:</para>
-    <xdoc:transform href="../../transforms/generate-components-list.xsl" global-parameters-uri="../data/componentdoc-global-parameters.xml"/>
+        role="newpage" xlink:href="{$owner-company-git-site-uri}"/>). See its <link linkend="description">description</link> for more
+      information.</para>
 
     <!--<xdoc:dump-parameters type="table"/>-->
 
   </preface>
+
+  <!-- ================================================================== -->
+
+  <chapter xml:id="description">
+    <title>Description</title>
+
+    <para role="keep-with-next">The <emphasis role="bold"><code>xtpxlib</code></emphasis> library currently consists of the following components:</para>
+    <xdoc:transform href="../../transforms/generate-components-list.xsl" global-parameters-uri="../data/componentdoc-global-parameters.xml"/>
+
+  </chapter>
 
   <!-- ================================================================== -->
 

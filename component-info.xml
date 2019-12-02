@@ -8,7 +8,7 @@
     The information in this document is used in several places to generate documentation, readme files, etc.
   -->
   <!-- ================================================================== -->
-  
+
   <releases>
     <release version="0.0" date="2019-11-28">
       Development of `xtpxlib-webdoc`.
@@ -22,11 +22,11 @@
   </dependencies>
 
   <title>Xatapult XML Library - Common website + GitHub pages generator software</title>
-  <summary xml:space="preserve">
-**`xtpxlib-webdoc`** is an *internal* component in the **`xtpxlib`** library. It takes care of:
-    
-* The main **`xtpxlib`** documentation website.
-* Some internal scripts and documentation for publishing and releasing components.
+  <summary>
+    **`xtpxlib-webdoc`** is an *internal* component in the **`xtpxlib`** library. It takes care of:
+        
+    * The main **`xtpxlib`** documentation website.
+    * Some internal scripts and documentation for publishing and releasing components.
   </summary>
   <documentation-uri>http://www.xatapult.nl</documentation-uri>
 

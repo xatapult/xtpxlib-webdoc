@@ -45,4 +45,8 @@
     <value>GNU GENERAL PUBLIC LICENSE - Version 3, 29 June 2007</value>
   </parameter>
   
+  <parameter name="library-name">
+    <value>Xatapult XML Library</value>
+  </parameter>
+  
 </parameters>

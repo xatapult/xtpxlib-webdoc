@@ -21,7 +21,7 @@
     <!-- + container! -->
   </dependencies>
 
-  <title>Xatapult XML Library - Common website + GitHub pages generator software</title>
+  <title>Common website + GitHub pages generator software</title>
   <summary>
     **`xtpxlib-webdoc`** is an *internal* component in the **`xtpxlib`** library. It takes care of:
         

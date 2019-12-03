@@ -101,8 +101,8 @@
   <!-- ================================================================== -->
   <!-- REMOVE COMMENTS: -->
 
-  <xsl:template match="comment()" mode="mode-remove-comments">
-    <!-- Remove -->
+  <xsl:template match="comment()[normalize-space(.) ne '']" mode="mode-remove-comments">
+    <!-- Remove non-empty comments. Empty comments might be there to keep <script> start/end tags apart... -->
   </xsl:template>
 
   <!-- ================================================================== -->

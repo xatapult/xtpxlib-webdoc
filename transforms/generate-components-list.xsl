@@ -34,44 +34,54 @@
 
   <xsl:template match="/">
     <xdoc:GROUP>
-      <table role="nonumber">
-        <title/>
-        <tgroup cols="2">
-          <colspec role="code-width-cm:3-6"/>
-          <colspec/>
-          <thead>
-            <row>
-              <entry>Component</entry>
-              <entry>Description</entry>
-            </row>
-          </thead>
-          <tbody>
-            <xsl:for-each select="$active-components">
-              <xsl:variable name="component-information" as="element(xwebdoc:component-info)" select="xwebdoc:get-component-info(.)"/>
-              <xsl:variable name="documentation-uri" as="xs:string?" select="$component-information/xwebdoc:documentation-uri"/>
-              <row>
-                <entry>
-                  <para>
-                    <code role="code-width-limited">
-                      <xsl:choose>
-                        <xsl:when test="normalize-space($documentation-uri) ne ''">
-                          <link xlink:href="{$documentation-uri}">{.}</link>
-                        </xsl:when>
-                        <xsl:otherwise>
-                          <xsl:value-of select="."/>
-                        </xsl:otherwise>
-                      </xsl:choose>
-                    </code>
-                  </para>
-                </entry>
-                <entry>
-                  <para>{$component-information/xwebdoc:title}</para>
-                </entry>
-              </row>
-            </xsl:for-each>
-          </tbody>
-        </tgroup>
-      </table>
+      <xsl:choose>
+        <xsl:when test="exists($active-components)">
+          <table role="nonumber">
+            <title/>
+            <tgroup cols="2">
+              <colspec role="code-width-cm:3-6"/>
+              <colspec/>
+              <thead>
+                <row>
+                  <entry>Component</entry>
+                  <entry>Description</entry>
+                </row>
+              </thead>
+              <tbody>
+                <xsl:for-each select="$active-components">
+                  <xsl:variable name="component-information" as="element(xwebdoc:component-info)" select="xwebdoc:get-component-info(.)"/>
+                  <xsl:variable name="documentation-uri" as="xs:string?" select="$component-information/xwebdoc:documentation-uri"/>
+                  <row>
+                    <entry>
+                      <para>
+                        <code role="code-width-limited">
+                          <xsl:choose>
+                            <xsl:when test="normalize-space($documentation-uri) ne ''">
+                              <link xlink:href="{$documentation-uri}">{.}</link>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:value-of select="."/>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </code>
+                      </para>
+                    </entry>
+                    <entry>
+                      <para>{$component-information/xwebdoc:title}</para>
+                    </entry>
+                  </row>
+                </xsl:for-each>
+              </tbody>
+            </tgroup>
+          </table>
+        </xsl:when>
+        <xsl:when test="not(doc-available($full-global-parameters-uri))">
+          <para>*** Global parameter file not found: "{$full-global-parameters-uri}"</para>
+        </xsl:when>
+        <xsl:otherwise>
+          <para>*** Missing active-components parameter in global parameter file "{$full-global-parameters-uri}"</para>
+        </xsl:otherwise>  
+      </xsl:choose>
     </xdoc:GROUP>
   </xsl:template>
 

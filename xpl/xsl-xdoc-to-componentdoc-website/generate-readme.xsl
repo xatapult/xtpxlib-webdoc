@@ -14,14 +14,18 @@
   <xsl:mode on-no-match="fail"/>
 
   <xsl:include href="../../xslmod/xtpxlib-webdoc.mod.xsl"/>
+  <xsl:include href="../../../xtpxlib-common/xslmod/parameters.mod.xsl"/>
 
   <!-- ================================================================== -->
   <!-- PARAMETERS: -->
 
   <xsl:param name="component-name" as="xs:string" required="yes"/>
+  <xsl:param name="href-global-parameters" as="xs:string" required="yes"/>
 
   <!-- ================================================================== -->
   <!-- GLOBAL DECLARATIONS: -->
+  
+  <xsl:variable name="global-parameters" as="map(xs:string, xs:string*)" select="xtlc:parameters-get($href-global-parameters, ())"/>
 
   <xsl:variable name="component-information" as="element(xwebdoc:component-info)" select="xwebdoc:get-component-info($component-name)"/>
   <xsl:variable name="current-release" as="element(xwebdoc:release)" select="($component-information/xwebdoc:releases/xwebdoc:release)[1]"/>
@@ -54,9 +58,9 @@
   <xsl:template match="/">
 
 
-    <README xml:space="preserve"># {local:code($component-name)}: {$component-information/xwebdoc:title}
+    <README xml:space="preserve"># {local:code($component-name)}: {$global-parameters?library-name} - {$component-information/xwebdoc:title}
 
-**{$xwebdoc:owner-company-name} - {local:siteref($xwebdoc:owner-website-uri)}**
+**{$global-parameters?owner-company-name} - {local:siteref($global-parameters?owner-company-website)}**
 
 {$line} 
 
@@ -72,10 +76,9 @@ Git URI: {local:code($component-information/xwebdoc:git-uri)}
 
 Git site: {local:siteref($component-information/xwebdoc:git-site-uri)}
       
-Dependent components: {string-join(xwebdoc:get-dependent-component-names($component-name), '; ')}
-
 {$component-dependency-part}
 </README>
+    
   </xsl:template>
 
   <!-- ================================================================== -->

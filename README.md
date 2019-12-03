@@ -19,8 +19,6 @@ Git URI: `git@github.com:xatapult/xtpxlib-webdoc.git`
 
 Git site: [`https://github.com/xatapult/xtpxlib-webdoc`](https://github.com/xatapult/xtpxlib-webdoc)
       
-Dependent components: xtpxlib-common; xtpxlib-xdoc
-
 This component depends on:
-* `xtpxlib-xdoc` (Xatapult XML Library - xdoc component)
-* [`xtpxlib-common`](http://www.xatapult.nl) (Xatapult XML Library - Common component)
+* `xtpxlib-xdoc` (xdoc component)
+* [`xtpxlib-common`](http://www.xatapult.nl) (Common component)

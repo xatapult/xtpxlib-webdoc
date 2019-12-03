@@ -14,9 +14,6 @@
 
   <xsl:variable name="xwebdoc:component-name" as="xs:string" select="'xtpxlib-webdoc'"/>
 
-  <xsl:variable name="xwebdoc:owner-company-name" as="xs:string" select="'Xatapult&#160;Content&#160;Engineering'"/>
-  <xsl:variable name="xwebdoc:owner-website-uri" as="xs:string" select="'http://www.xatapult.com'"/>
-
   <!-- ================================================================== -->
   <!-- COMPONENT INFO INFORMATION: -->
 

@@ -10,57 +10,70 @@
   </p:documentation>
 
   <!-- ================================================================== -->
-  <!-- SETUP: -->
+  <!-- PORTS: -->
 
   <p:input port="source" primary="true" sequence="false">
     <p:documentation>The DocBook source with xdoc extensions to create the website from</p:documentation>
   </p:input>
 
-  <p:option name="href-parameters" required="false" select="()">
-    <p:documentation>Reference to an optional document with parameter settings. See the xtpxlib-common parameters.mod.xsl module for details.</p:documentation>
-  </p:option>
+  <p:output port="result" primary="true" sequence="false">
+    <p:documentation>A small XML report about the website generation.</p:documentation>
+    <p:pipe port="result" step="end-result"/>
+  </p:output>
+  <p:serialization port="result" method="xml" encoding="UTF-8" indent="true" omit-xml-declaration="false"/>
 
-  <p:option name="parameter-filters" required="false" select="()">
-    <p:documentation>Filter settings for processing the parameters. Format: "name=value|name=value|..."</p:documentation>
-  </p:option>
-
-  <p:option name="href-global-parameters" required="false" select="()">
-    <p:documentation>Optional global parameters file. The parameters from this file will be merged in as well.</p:documentation>
-  </p:option>
-
-  <p:option name="resources-subdirectory" required="false" select="()">
-    <p:documentation>The *relative* name of the subdirectory that contains specific resources (like CSS, images, etc.) for this component.</p:documentation>
-  </p:option>
-
-  <p:option name="global-resources-directory" required="false" select="()">
-    <p:documentation>The name of the subdirectory that contains global resources (resources used for documenting a group of components).</p:documentation>
-  </p:option>
-
-  <p:option name="output-directory" required="true">
-    <p:documentation>The name of the output directory for the generated website.</p:documentation>
-  </p:option>
-
-  <p:option name="href-template" required="true">
-    <p:documentation>TBD html template to use</p:documentation>
-  </p:option>
+  <!-- ================================================================== -->
+  <!-- OPTIONS: -->
 
   <p:option name="component-name" required="true">
     <p:documentation>The name of the component (e.g. `xtpxlib-xdoc`) for which the documentation is generated.</p:documentation>
   </p:option>
 
   <p:option name="component-display-name" required="false" select="()">
-    <p:documentation>The name of the component (e.g. `xtpxlib`) under which name the documentation is generated. If empty `$component-name` is used.</p:documentation>
+    <p:documentation>The name of the component (e.g. `xtpxlib`) under which name the documentation is generated. 
+      If empty `$component-name` is used.</p:documentation>
+  </p:option>
+
+  <p:option name="href-parameters" required="false" select="()">
+    <p:documentation>Reference to an optional document with parameter settings. See the `xtpxlib-common` `parameters.mod.xsl` module for details
+      about its format.</p:documentation>
+  </p:option>
+
+  <p:option name="parameter-filters" required="false" select="()">
+    <p:documentation>Filter settings for processing the parameters. Format: `"name=value|name=value|..."`</p:documentation>
   </p:option>
 
   <p:option name="href-readme" required="false" select="()">
-    <p:documentation>The name of the readme file to generate (if any).</p:documentation>
+    <p:documentation>The name of the README file to generate (if any).</p:documentation>
   </p:option>
 
-  <p:output port="result" primary="true" sequence="false">
-    <p:documentation>TBD???</p:documentation>
-    <p:pipe port="result" step="end-result"/>
-  </p:output>
-  <p:serialization port="result" method="xml" encoding="UTF-8" indent="true" omit-xml-declaration="false"/>
+  <p:option name="output-directory" required="true">
+    <p:documentation>The name of the output directory for the generated website.</p:documentation>
+  </p:option>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- The following options all get sensible defaults which are, in most cases, OK: -->
+  <!-- REMARK: A bug in Calabash (?) returns the wrong value for static-base-uri() in p:option/@select (the URI of the importing
+    document, not this one). Therefore we postpone the calculation of the actual defaults for these parameters to later on.
+  -->
+
+  <p:option name="resources-subdirectory" required="false" select="'resources'">
+    <p:documentation>The *relative* name of the subdirectory that contains specific resources (like CSS, images, etc.) for this component.</p:documentation>
+  </p:option>
+
+  <p:option name="href-global-parameters" required="false" select="()">
+    <p:documentation>Reference to the global parameters file.</p:documentation>
+  </p:option>
+
+  <p:option name="global-resources-directory" required="false" select="()">
+    <p:documentation>The name of the subdirectory that contains global resources (resources used for documenting a group of components).</p:documentation>
+  </p:option>
+
+  <p:option name="href-template" required="false" select="()">
+    <p:documentation>Reference to the HTML template used for generating the website pages.</p:documentation>
+  </p:option>
+
+  <!-- ================================================================== -->
 
   <p:import href="../../xtpxlib-xdoc/xpl/xdoc-to-docbook.xpl"/>
   <p:import href="../../xtpxlib-xdoc/xpl/docbook-to-xhtml.xpl"/>
@@ -69,23 +82,14 @@
   <p:import href="../../xtpxlib-container/xplmod/container.mod/container.mod.xpl"/>
 
   <!-- ================================================================== -->
-  <!-- TBD -->
 
   <p:declare-step type="local:merge-parameters-and-version-information" name="merge-parameters-and-version-information">
 
     <p:documentation>
-      Merges a set of parameters with information from a standard `xtpxlib` component information file. Writes this file to disk.
-      Acts like a p:identity step, primary input is passed unchanged.
+      Merges information from the `component-info.xml` document, the local and global parameters and some other stuff into a single
+      parameter file. Writes this to disk.
       
-      Turns the component information into the following parameters:
-      * `component-name`
-      * `component-display-name`
-      * `component-title`
-      * `component-documentation-uri`
-      * `component-git-uri`
-      * `component-git-site-uri`
-      * `component-current-release-version`
-      * `component-current-release-date`
+      Acts like a `p:identity` step in the pipeline.
     </p:documentation>
 
     <p:option name="component-name" required="true"/>
@@ -154,12 +158,13 @@
   <p:declare-step type="xwebdoc:generate-readme" name="generate-readme">
 
     <p:documentation>
-    TBD
+      Generates a standard `xtpxlib` `README.md` file.
     </p:documentation>
 
     <p:option name="href-readme" required="true"/>
     <p:option name="component-name" required="true"/>
-    
+    <p:option name="href-global-parameters" required="true"/>
+
     <p:input port="source" primary="true" sequence="true"/>
     <p:output port="result" primary="true" sequence="true">
       <p:pipe port="source" step="generate-readme"/>
@@ -174,6 +179,7 @@
             <p:document href="xsl-xdoc-to-componentdoc-website/generate-readme.xsl"/>
           </p:input>
           <p:with-param name="component-name" select="$component-name"/>
+          <p:with-param name="href-global-parameters" select="$href-global-parameters"/>
         </p:xslt>
         <p:store method="text" encoding="UTF-8">
           <p:with-option name="href" select="$href-readme"/>
@@ -195,13 +201,24 @@
   <p:variable name="base-uri-source-document" select="base-uri(/)"/>
   <p:variable name="full-href-parameters"
     select="if (normalize-space($href-parameters) eq '') then () else resolve-uri($href-parameters, $base-uri-source-document)"/>
-  <p:variable name="full-href-global-parameters"
-    select="if (normalize-space($href-global-parameters) eq '') then () else resolve-uri($href-global-parameters, $base-uri-source-document)"/>
   <p:variable name="full-resources-source-directory" select="resolve-uri($resources-subdirectory, $base-uri-source-document)"/>
-  <p:variable name="full-global-resources-directory" select="resolve-uri($global-resources-directory, $base-uri-source-document)"/>
   <p:variable name="full-output-directory" select="resolve-uri($output-directory, $base-uri-source-document)"/>
   <p:variable name="full-resources-target-directory" select="string-join(($full-output-directory, $resources-subdirectory), '/')"/>
-  <p:variable name="full-href-template" select="resolve-uri($href-template, $base-uri-source-document)"/>
+
+  <!-- Provide sensible defaults for some global files/directories. This must be done here due to a Calabash bug (?) in the
+    static-base-uri() handling. -->
+  <p:variable name="full-href-global-parameters"
+    select="if (normalize-space($href-global-parameters) eq '') 
+      then resolve-uri('../global/data/componentdoc-global-parameters.xml', static-base-uri()) 
+      else resolve-uri($href-global-parameters, $base-uri-source-document)"/>
+  <p:variable name="full-global-resources-directory"
+    select="if (normalize-space($global-resources-directory) eq '') 
+      then resolve-uri('../global/resources/', static-base-uri())
+      else resolve-uri($global-resources-directory, $base-uri-source-document)"/>
+  <p:variable name="full-href-template"
+    select="if (normalize-space($href-template) eq '') 
+      then resolve-uri('../global/data/componentdoc-website-template.html', static-base-uri()) 
+      else resolve-uri($href-template, $base-uri-source-document)"/>
 
   <!-- Get the correct component display name: -->
   <p:variable name="component-display-name-to-use"
@@ -335,8 +352,9 @@
 
   <!-- Generate a readme file (if any): -->
   <xwebdoc:generate-readme>
-    <p:with-option name="href-readme" select="$href-readme"/> 
-    <p:with-option name="component-name" select="$component-name"/> 
+    <p:with-option name="href-readme" select="$href-readme"/>
+    <p:with-option name="component-name" select="$component-name"/>
+    <p:with-option name="href-global-parameters" select="$full-href-global-parameters"/> 
   </xwebdoc:generate-readme>
 
   <!-- Final cleanup: -->
@@ -351,45 +369,19 @@
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!-- Subpipeline to get the contents of the specific resources directory: -->
 
-  <p:choose>
-    <p:when test="normalize-space($resources-subdirectory) ne ''">
-      <xtlc:recursive-directory-list>
-        <p:with-option name="path" select="$full-resources-source-directory"/>
-        <p:with-option name="flatten" select="true()"/>
-      </xtlc:recursive-directory-list>
-    </p:when>
-    <p:otherwise>
-      <p:identity>
-        <p:input port="source">
-          <p:inline>
-            <c:directory/>
-          </p:inline>
-        </p:input>
-      </p:identity>
-    </p:otherwise>
-  </p:choose>
+  <xtlc:recursive-directory-list>
+    <p:with-option name="path" select="$full-resources-source-directory"/>
+    <p:with-option name="flatten" select="true()"/>
+  </xtlc:recursive-directory-list>
   <p:identity name="resources-directory-list"/>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!-- Subpipeline to get the contents of the global resources directory: -->
 
-  <p:choose>
-    <p:when test="normalize-space($global-resources-directory) ne ''">
-      <xtlc:recursive-directory-list>
-        <p:with-option name="path" select="$full-global-resources-directory"/>
-        <p:with-option name="flatten" select="true()"/>
-      </xtlc:recursive-directory-list>
-    </p:when>
-    <p:otherwise>
-      <p:identity>
-        <p:input port="source">
-          <p:inline>
-            <c:directory/>
-          </p:inline>
-        </p:input>
-      </p:identity>
-    </p:otherwise>
-  </p:choose>
+  <xtlc:recursive-directory-list>
+    <p:with-option name="path" select="$full-global-resources-directory"/>
+    <p:with-option name="flatten" select="true()"/>
+  </xtlc:recursive-directory-list>
   <p:identity name="global-resources-directory-list"/>
 
 </p:declare-step>

@@ -71,11 +71,7 @@
           <ul class="nav navbar-nav">
             <xsl:for-each select="$toc-level-0/xhtml:li[position() gt 1]">
               <li>
-                <xsl:if test="position() eq 1">
-                  <xsl:attribute name="class" select="'active'"/>
-                </xsl:if>
                 <xsl:variable name="toc-level-1" as="element(xhtml:ul)?" select="xhtml:ul[@class eq 'toc-level-1']"/>
-
                 <xsl:choose>
                   <xsl:when test="exists($toc-level-1)">
                     <xsl:attribute name="class" select="'dropdown'"/>

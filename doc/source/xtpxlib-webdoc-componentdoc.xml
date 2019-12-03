@@ -39,8 +39,8 @@
   <chapter xml:id="description">
     <title>Description</title>
 
-    <para role="keep-with-next">The <emphasis role="bold"><code>xtpxlib</code></emphasis> library currently consists of the following components:</para>
-    <xdoc:transform href="../../transforms/generate-components-list.xsl" global-parameters-uri="../data/componentdoc-global-parameters.xml"/>
+    <para role="keep-with-next">The <!--<emphasis role="bold"><code>xtpxlib</code></emphasis>--> {$library-name} currently consists of the following components:</para>
+    <xdoc:transform href="../../transforms/generate-components-list.xsl" global-parameters-uri="../../global/data/componentdoc-global-parameters.xml"/>
 
   </chapter>
 

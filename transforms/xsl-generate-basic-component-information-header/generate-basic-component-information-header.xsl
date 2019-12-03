@@ -70,6 +70,10 @@
         <para role="halfbreak"/>
 
         <bridgehead>Technical information:</bridgehead>
+        <xsl:variable name="documentation-uri" as="xs:string?" select="$component-information/xwebdoc:documentation-uri"/>
+        <xsl:if test="exists($documentation-uri)">
+          <para>Component documentation: <link xlink:href="{$documentation-uri}"/></para>
+        </xsl:if>
         <para xsl:expand-text="false">License: {$license}</para>
         <para>Git URI: <code>{$component-information/xwebdoc:git-uri}</code></para>
         <para>Git site: <link role="newpage" xlink:href="{$component-information/xwebdoc:git-site-uri}"/></para>

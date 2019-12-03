@@ -9,7 +9,9 @@ code {
   font-size: 100%;
 }
 
-div.sidebar, div.warning, div.note {
+div.sidebar,
+div.warning,
+div.note {
   border: thin black solid;
   padding: 10px;
 }
@@ -17,7 +19,8 @@ div.sidebar, div.warning, div.note {
 p.bridgehead {
   font-weight: bold;
   font-size: 120%;
-  border-top: thin solid lightgrey;
+  border-top: thin solid grey;
+  background-color: lightgrey;
 }
 
 span.italic {

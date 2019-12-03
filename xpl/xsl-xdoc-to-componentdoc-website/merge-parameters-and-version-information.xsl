@@ -5,7 +5,10 @@
   exclude-result-prefixes="#all" expand-text="true">
   <!-- ================================================================== -->
   <!-- 
-       TBD
+      Merges several sources for parameters into a single parameter file:
+      * Local & global parameter files
+      * component-info.xml
+      * Some additional data
   -->
   <!-- ================================================================== -->
   <!-- SETUP: -->

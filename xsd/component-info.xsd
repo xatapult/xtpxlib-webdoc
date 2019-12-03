@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.xtpxlib.nl/ns/webdoc"
   xmlns:webdoc="http://www.xtpxlib.nl/ns/webdoc">
+  <xs:annotation>
+    <xs:documentation>Schema for the standard xtpxlib component-info.xml file</xs:documentation>
+  </xs:annotation>
   <xs:element name="component-info">
     <xs:complexType>
       <xs:sequence>

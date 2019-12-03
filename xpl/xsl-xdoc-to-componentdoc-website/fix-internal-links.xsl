@@ -4,7 +4,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml" exclude-result-prefixes="#all">
   <!-- ================================================================== -->
   <!--*	
-    TBD
+    Performs fixes on the internal links. Since these can now be in separate pages we need to cater for this.
 	-->
   <!-- ================================================================== -->
   <!-- SETUP: -->

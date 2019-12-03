@@ -66,7 +66,7 @@
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
   <xsl:function name="xwebdoc:get-dependent-component-information" as="map(xs:string, element(xwebdoc:component-info))">
-    <!--~ TBD  -->
+    <!--~ Returns a map with the dependent component names as keys and the xwebdoc:component-info elements for these components as data.  -->
     <xsl:param name="component-name" as="xs:string"/>
 
     <xsl:variable name="component-names" as="xs:string*" select="xwebdoc:get-dependent-component-names($component-name)"/>
@@ -80,7 +80,7 @@
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
   <xsl:function name="xwebdoc:get-dependent-component-names" as="xs:string*">
-    <!--~ TBD  -->
+    <!--~ Get a list of all dependent component names for a given component.  -->
     <xsl:param name="component-name" as="xs:string"/>
     <xsl:sequence select="local:get-dependent-component-names-recursive($component-name, ())"/>
   </xsl:function>

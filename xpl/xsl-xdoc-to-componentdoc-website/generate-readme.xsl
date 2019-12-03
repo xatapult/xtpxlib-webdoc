@@ -4,7 +4,7 @@
   xmlns:xwebdoc="http://www.xtpxlib.nl/ns/webdoc" xmlns:local="#local.rff_3dl_wjb" exclude-result-prefixes="#all" expand-text="true">
   <!-- ================================================================== -->
   <!-- 
-       TBD
+       Generates a standard README.md file for an xtpxlib component
   -->
   <!-- ================================================================== -->
   <!-- SETUP: -->

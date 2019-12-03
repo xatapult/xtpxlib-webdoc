@@ -3,7 +3,11 @@
   xmlns:db="http://docbook.org/ns/docbook" version="1.0" xpath-version="2.0" exclude-inline-prefixes="#all">
 
   <p:documentation>
-     TBD
+     xdoc transform. Creates a standard component header, suitable for inclusion on the home page of a component documentation website.
+     
+     Attributes on the xdoc:transform element:
+     * `component-name`: (mandatory) Name of the component
+     * `xtpxlib-generic`: (boolean, default `false`) If true a limited set is generated, suitable for the `xtpxlib` main website.
   </p:documentation>
 
   <!-- ================================================================== -->

@@ -5,7 +5,7 @@
   exclude-result-prefixes="#all" expand-text="true">
   <!-- ================================================================== -->
   <!--*	
-    TBD
+    Adapts the generated HTML so it becomes suitable for the Bootstrap environment.
 	-->
   <!-- ================================================================== -->
   <!-- SETUP: -->

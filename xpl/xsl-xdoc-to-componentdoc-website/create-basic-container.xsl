@@ -4,7 +4,7 @@
   xmlns:xtlc="http://www.xtpxlib.nl/ns/common" xmlns:xhtml="http://www.w3.org/1999/xhtml" exclude-result-prefixes="#all">
   <!-- ================================================================== -->
   <!--*	
-    TBD
+    Creates the basic xtpxlib container structure from the documentation's HTML
 	-->
   <!-- ================================================================== -->
   <!-- SETUP: -->

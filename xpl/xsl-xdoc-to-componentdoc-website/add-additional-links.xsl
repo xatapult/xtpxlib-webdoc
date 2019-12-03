@@ -4,7 +4,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="#all" expand-text="true">
   <!-- ================================================================== -->
   <!--*	
-    TBD
+    Adds a TOC to all pages.
 	-->
   <!-- ================================================================== -->
   <!-- SETUP: -->
@@ -37,7 +37,6 @@
       <xsl:copy-of select="$toc"/>
       <xsl:comment> == END TOC == </xsl:comment>
       <xsl:copy-of select="node()"/>
-
     </xsl:copy>
   </xsl:template>
 

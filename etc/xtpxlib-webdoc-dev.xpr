@@ -10,6 +10,36 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>../xpl/xsl-xdoc-to-componentdoc-website/adapt-html.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>generate-componentdoc</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>../global/data/componentdoc-website-template.html</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>generate-componentdoc</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>../xpl/xdoc-to-componentdoc-website.xpl</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -242,6 +272,7 @@
     </meta>
     <projectTree name="xtpxlib-webdoc-dev.xpr">
         <folder path="../../xtpxlib-common/"/>
+        <folder path="../../xtpxlib-container/"/>
         <folder path="../"/>
         <folder path="../../xtpxlib-xdoc/"/>
     </projectTree>

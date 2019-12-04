@@ -67,7 +67,6 @@
           <para>Installation and usage information can be found on <emphasis role="bold"><code>xtpxlib</code></emphasis>'s main website <link
               xlink:href="{$main-documentation-uri}"/>.</para>
         </xsl:if>
-        <para role="halfbreak"/>
 
         <bridgehead>Technical information:</bridgehead>
         <xsl:variable name="documentation-uri" as="xs:string?" select="$component-information/xwebdoc:documentation-uri"/>

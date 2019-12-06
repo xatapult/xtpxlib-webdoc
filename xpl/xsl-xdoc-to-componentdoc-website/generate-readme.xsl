@@ -34,6 +34,9 @@
   <xsl:variable name="documentation-ref" as="xs:string"
     select="if (normalize-space($documentation-uri) ne '') then ('Documentation: ' || local:siteref($documentation-uri)) else ''"/>
 
+  <xsl:variable name="markdown-line" as="xs:string" select="'----------'"/>
+  
+  <!-- Get the component dependy information: -->
   <xsl:variable name="dependent-component-information" as="map(xs:string, element(xwebdoc:component-info))"
     select="xwebdoc:get-dependent-component-information($component-name)"/>
   <xsl:variable name="component-dependency-lines" as="xs:string*">
@@ -49,8 +52,17 @@
     </xsl:if>
   </xsl:variable>
   <xsl:variable name="component-dependency-part" as="xs:string" select="string-join($component-dependency-lines, '&#x0a;')"/>
-
-  <xsl:variable name="line" as="xs:string" select="'----------'"/>
+  
+  <!-- Get the version history: -->
+  <xsl:variable name="version-history-lines" as="xs:string*">
+    <xsl:for-each select="$component-information/xwebdoc:releases/xwebdoc:release">
+      <xsl:sequence select="'**V' || @version || ' - ' || @date || (if (position() eq 1) then ' (current)' else ()) || '**'"/>
+      <xsl:sequence select="''"/>
+      <xsl:sequence select="xtlc:text2lines(string(.), true(), true())"/>
+      <xsl:sequence select="''"/>
+    </xsl:for-each>
+  </xsl:variable>
+  <xsl:variable name="version-history-part" as="xs:string" select="string-join($version-history-lines, '&#x0a;')"/>
 
   <!-- ================================================================== -->
   <!-- MAIN TEMPLATES: -->
@@ -62,13 +74,13 @@
 
 **{$global-parameters?owner-company-name} - {local:siteref($global-parameters?owner-company-website)}**
 
-{$line} 
+{$markdown-line} 
 
 {string-join(xtlc:text2lines(string($component-information/xwebdoc:summary), true(), true()), '&#10;')}
 
-{$line}
+## Technical information
 
-Component version: {$current-release/@version} - {$current-release/@date}
+Component version: V{$current-release/@version} - {$current-release/@date}
 
 {$documentation-ref}
 
@@ -77,6 +89,11 @@ Git URI: {local:code($component-information/xwebdoc:git-uri)}
 Git site: {local:siteref($component-information/xwebdoc:git-site-uri)}
       
 {$component-dependency-part}
+
+## Version history
+
+{$version-history-part}
+
 </README>
     
   </xsl:template>

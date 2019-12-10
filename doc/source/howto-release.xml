@@ -81,7 +81,8 @@
       </listitem>
 
       <listitem>
-        <para>Git commit everything to the release branch</para>
+        <para>Git commit everything to the release branch.</para>
+        <para>Usual commit message: <code>Release preparations vx.y</code></para>
       </listitem>
 
       <listitem>

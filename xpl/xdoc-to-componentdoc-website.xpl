@@ -191,7 +191,48 @@
     </p:choose>
 
   </p:declare-step>
+  
+  <!-- ================================================================== -->
 
+  <p:declare-step type="xwebdoc:generate-github-additional-files" name="generate-github-additional-files">
+    
+    <p:documentation>
+      Generates some additional files necessary for the GitHub pages
+    </p:documentation>
+    
+    <p:option name="base-output-directory" required="true"/>
+    <p:option name="component-name" required="true"/>
+    
+    <p:input port="source" primary="true" sequence="true"/>
+    <p:output port="result" primary="true" sequence="true">
+      <p:pipe port="source" step="generate-github-additional-files"/>
+    </p:output>
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <p:xslt>
+      <p:input port="stylesheet">
+        <p:document href="xsl-xdoc-to-componentdoc-website/generate-cname.xsl"/>
+      </p:input>
+      <p:with-param name="component-name" select="$component-name"/>
+    </p:xslt>
+    <p:store method="text" encoding="UTF-8">
+      <p:with-option name="href" select="concat($base-output-directory, '/CNAME')"/> 
+    </p:store>
+    
+    <!-- The "theme" file for the GitHub pages. We're not using this, but somehow it seems to be necessary to get 
+      GitHub pages at all (?). Not sure. Doesn't harm. -->
+    <p:store method="text" encoding="UTF-8">
+      <p:input port="source">
+        <p:inline>
+          <CONFIG>theme: jekyll-theme-minimal</CONFIG>
+        </p:inline>
+      </p:input>
+      <p:with-option name="href" select="concat($base-output-directory, '/_config.yml')"/> 
+    </p:store>
+    
+  </p:declare-step>
+  
   <!-- ================================================================== -->
   <!-- MAIN PIPELINE: -->
 
@@ -349,6 +390,12 @@
   <p:add-attribute attribute-name="pdf" match="/*">
     <p:with-option name="attribute-value" select="$pdf-absolute-href"/>
   </p:add-attribute>
+  
+  <!-- Generate a GitHub pages CNAME file: -->
+  <xwebdoc:generate-github-additional-files>
+    <p:with-option name="component-name" select="$component-name"/>
+    <p:with-option name="base-output-directory" select="$full-output-directory"/> 
+  </xwebdoc:generate-github-additional-files>
 
   <!-- Generate a readme file (if any): -->
   <xwebdoc:generate-readme>

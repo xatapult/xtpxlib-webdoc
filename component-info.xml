@@ -27,7 +27,8 @@
     * The main **`xtpxlib`** documentation website.
     * Some internal scripts and documentation for publishing and releasing components.
   </summary>
-  <documentation-uri>http://www.xatapult.nl</documentation-uri>
+  
+  <documentation-uri>http://www.xtpxlib.org</documentation-uri>
 
   <git-uri>git@github.com:xatapult/xtpxlib-webdoc.git</git-uri>
   <git-site-uri>https://github.com/xatapult/xtpxlib-webdoc</git-site-uri>

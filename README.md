@@ -13,7 +13,7 @@
 
 Component version: V0.9 - 2019-12-10
 
-Documentation: [`http://www.xatapult.nl`](http://www.xatapult.nl)
+Documentation: [`http://www.xtpxlib.org`](http://www.xtpxlib.org)
 
 Git URI: `git@github.com:xatapult/xtpxlib-webdoc.git`
 

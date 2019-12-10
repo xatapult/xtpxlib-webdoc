@@ -3,9 +3,18 @@
  xsi:noNamespaceSchemaLocation="../../../xtpxlib-common/xsd/parameters.xsd">
   <!-- ================================================================== -->
   <!--~
-    TBD
+    These are the global parameters (meaning they're the same for all components) used in generating the component's 
+    documentation pages by `../../xpl/xdoc-to-componentdoc-website.xpl`.
   -->
   <!-- ================================================================== -->
+  
+  <parameter name="active-components">
+    <!-- This is a list of all currently active xtpxlib components. It is used to generate the component overview by
+      ../../transforms/generate-components-list.xsl
+    -->
+    <value>xtpxlib-common</value>
+   
+  </parameter>
   
   <parameter name="owner-company-name">
     <value>Xatapult&#160;Content&#160;Engineering</value>
@@ -19,7 +28,7 @@
     <value>+31&#160;6&#160;53260792</value>
   </parameter>
   
-  <parameter name="owner-company-github">
+  <parameter name="owner-company-git-site-uri">
     <value>https://github.com/xatapult</value>
   </parameter>
   
@@ -31,12 +40,12 @@
     <value>erik@xatapult.com</value>
   </parameter>
   
-  <parameter name="library-name">
-    <value>xtpxlib</value>
+  <parameter name="license">
+    <value>GNU GENERAL PUBLIC LICENSE - Version 3, 29 June 2007</value>
   </parameter>
   
-  <parameter name="core-component-name">
-    <value>xtpxlib-common</value>
+  <parameter name="library-name">
+    <value>Xatapult XML Library</value>
   </parameter>
-
+  
 </parameters>

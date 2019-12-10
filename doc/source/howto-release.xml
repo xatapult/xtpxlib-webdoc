@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../xtpxlib-xdoc/xsd/docbook/docbook.nvdl" type="application/xml" schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xdoc="http://www.xtpxlib.nl/ns/xdoc" version="5.0">
+  <!-- ================================================================== -->
+  <!--~
+    xdoc source for the main website of xtpxlib.
+  -->
+  <!-- ================================================================== -->
+
+  <info>
+    <title>How to release an <code>xtpxlib</code> component</title>
+    <subtitle>Internal <code>xtpxlib</code> documentation</subtitle>
+    <pubdate>{$DATE}</pubdate>
+    <author>
+      <personname>Erik Siegel</personname>
+    </author>
+    <orgname>Xatapult</orgname>
+  </info>
+
+  <!-- ================================================================== -->
+
+  <sect1>
+    <title>Instructions</title>
+
+    <para>The assumption is that all code and documentation is up-to-date.</para>
+
+    <orderedlist>
+      <listitem>
+        <para>Check the code for missing details:</para>
+        <itemizedlist>
+          <listitem>
+            <para>Do all important files have headers with a suitable description?</para>
+          </listitem>
+          <listitem>
+            <para>Search globally for <code>TBD</code></para>
+          </listitem>
+          <listitem>
+            <para>Is the information in <code>component-info.xml</code> still up to date (dependencies, etc.)?</para>
+          </listitem>
+          <listitem>
+            <para>…</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+
+      <listitem>
+        <para>Git commit everything (branch <code>develop</code>)</para>
+      </listitem>
+
+      <listitem>
+        <para>Determine the new version. The system used is <code>major.minor[.fixcode]</code>.</para>
+        <para/>
+      </listitem>
+
+      <listitem>
+        <para>Git-flow start a <emphasis>new release</emphasis> and give it the version number as release name, prefixed with a lower-case
+            <code>v</code> (so, for instance, <code>v1.0</code> or <code>v2.3.B</code>).</para>
+      </listitem>
+
+      <listitem>
+        <para>Edit <code>component-info.xml</code> and update the <tag>releases</tag> element with a <emphasis>new</emphasis> top <tag>release</tag>
+          child. Add:</para>
+        <itemizedlist>
+          <listitem>
+            <para>Version number and date</para>
+          </listitem>
+          <listitem>
+            <para>Short release description</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+
+      <listitem>
+        <para>Run the <code>doc/xpl/generate-componentdoc.xpl</code> pipeline to generate the GitHub pages site and other stuff.</para>
+      </listitem>
+
+      <listitem>
+        <para>Do a quick check on the generated documentation and the global <code>README.md</code> file for details (like version number/date,
+          etc.)</para>
+      </listitem>
+
+      <listitem>
+        <para>Git commit everything to the release branch.</para>
+        <para>Usual commit message: <code>Release preparations vx.y</code></para>
+      </listitem>
+
+      <listitem>
+        <para>.... </para>
+      </listitem>
+    </orderedlist>
+  </sect1>
+
+</article>

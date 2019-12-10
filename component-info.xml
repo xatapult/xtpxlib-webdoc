@@ -17,8 +17,7 @@
 
   <dependencies>
     <component name="xtpxlib-common"/>
-    <component name="xtpxlib-xdoc"/>
-    <!-- + container! -->
+    <!-- TBD: As soon as xdoc and container are public as well, mention them here! -->
   </dependencies>
 
   <title>Common website + GitHub pages generator software</title>

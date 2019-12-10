@@ -11,9 +11,9 @@
 
 ## Technical information
 
-Component version: V0.9 - 2019-12-10
+Component version: V0.9.A - 2019-12-10
 
-Documentation: [`http://www.xatapult.nl`](http://www.xatapult.nl)
+Documentation: [`http://www.xtpxlib.org`](http://www.xtpxlib.org)
 
 Git URI: `git@github.com:xatapult/xtpxlib-webdoc.git`
 
@@ -24,7 +24,11 @@ This component depends on:
 
 ## Version history
 
-**V0.9 - 2019-12-10 (current)**
+**V0.9.A - 2019-12-10 (current)**
+
+Pre-release of `xtpxlib-webdoc` (added GitHub pages details).
+
+**V0.9 - 2019-12-10**
 
 Pre-release of `xtpxlib-webdoc` (mainly for testing procedures and the GitHub pages details).
 

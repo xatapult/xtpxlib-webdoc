@@ -86,7 +86,9 @@
       </listitem>
 
       <listitem>
-        <para>.... </para>
+        <para>Finish the release (Git-flow ...TBD) and tag it the same as the release name (lower-case <code>v</code> with version number,
+            <code>vx.y</code>).</para>
+        <para>TBD: Auto commit/push???</para>
       </listitem>
     </orderedlist>
   </sect1>

@@ -10,6 +10,9 @@
   <!-- ================================================================== -->
 
   <releases>
+    <release version="0.9.A" date="2019-12-10">
+      Pre-release of `xtpxlib-webdoc` (added GitHub pages details).
+    </release>
     <release version="0.9" date="2019-12-10">
       Pre-release of `xtpxlib-webdoc` (mainly for testing procedures and the GitHub pages details).
     </release>

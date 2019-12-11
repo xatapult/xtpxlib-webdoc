@@ -13,14 +13,14 @@
 
 Component version: V0.9.A - 2019-12-10
 
-Documentation: [`http://www.xtpxlib.org`](http://www.xtpxlib.org)
+Documentation: [`https://www.xtpxlib.org`](https://www.xtpxlib.org)
 
 Git URI: `git@github.com:xatapult/xtpxlib-webdoc.git`
 
 Git site: [`https://github.com/xatapult/xtpxlib-webdoc`](https://github.com/xatapult/xtpxlib-webdoc)
       
 This component depends on:
-* [`xtpxlib-common`](http://www.xatapult.nl) (Common component: Shared libraries and IDE support)
+* [`xtpxlib-common`](https://common.xtpxlib.org) (Common component: Shared libraries and IDE support)
 
 ## Version history
 

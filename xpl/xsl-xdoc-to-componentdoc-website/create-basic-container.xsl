@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:local="#local-xdoc-to-moduledoc-website" xmlns:db="http://docbook.org/ns/docbook" xmlns:xtlcon="http://www.xtpxlib.nl/ns/container"
-  xmlns:xtlc="http://www.xtpxlib.nl/ns/common" xmlns:xhtml="http://www.w3.org/1999/xhtml" exclude-result-prefixes="#all">
+  xmlns:xwebdoc="http://www.xtpxlib.nl/ns/webdoc" xmlns:xtlc="http://www.xtpxlib.nl/ns/common" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  exclude-result-prefixes="#all">
   <!-- ================================================================== -->
   <!--*	
     Creates the basic xtpxlib container structure from the documentation's HTML
@@ -11,7 +12,7 @@
 
   <xsl:output method="xml" indent="no" encoding="UTF-8"/>
 
-  <xsl:include href="../../../xtpxlib-common/xslmod/general.mod.xsl"/>
+  <xsl:include href="../../xslmod/xtpxlib-webdoc.mod.xsl"/>
 
   <xsl:mode on-no-match="fail"/>
   <xsl:mode name="mode-create-contents" on-no-match="shallow-copy"/>
@@ -22,6 +23,7 @@
 
   <xsl:param name="href-target-path" as="xs:string" required="yes"/>
   <xsl:param name="href-componentdoc-website-template" as="xs:string" required="yes"/>
+  <xsl:param name="component-name" as="xs:string" required="yes"/>
 
   <!-- ================================================================== -->
   <!-- GLOBAL DECLARATIONS: -->
@@ -40,6 +42,10 @@
     </xsl:choose>
   </xsl:variable>
 
+  <!-- Stuff we need from the component-info: -->
+  <xsl:variable name="component-information" as="element(xwebdoc:component-info)" select="xwebdoc:get-component-info($component-name)"/>
+  <xsl:variable name="cname" as="xs:string" select="string($component-information/xwebdoc:documentation-uri) => xtlc:href-protocol-remove()"/>
+
   <!-- ================================================================== -->
 
   <xsl:template match="/">
@@ -52,11 +58,16 @@
     <!-- Create the container: -->
     <xtlcon:document-container timestamp="{current-dateTime()}" href-target-path="{$href-target-path}"
       moduledoc-website-template="{$href-componentdoc-website-template}" title="{$full-title}">
+
+      <!-- Create some entries for the GitHub pages: -->
+      <xsl:call-template name="create-github-pages-documents"/>
+
+      <!-- Create the html pages: -->
       <xsl:for-each select="/*/xhtml:div[@class = ('preface', 'chapter', 'appendix')]">
         <xsl:variable name="is-preface" as="xs:boolean" select="@class eq 'preface'"/>
         <!-- Create a container document entry: -->
         <xsl:variable name="title" as="xs:string" select="local:get-title(.)"/>
-        <xtlcon:document title="{$title}" index="{$is-preface}">
+        <xtlcon:document title="{$title}" index="{$is-preface}" is-page="true">
           <xsl:choose>
             <xsl:when test="$is-preface">
               <xsl:attribute name="href-target" select="'index.html'"/>
@@ -73,6 +84,28 @@
         </xtlcon:document>
       </xsl:for-each>
     </xtlcon:document-container>
+  </xsl:template>
+
+  <!-- ================================================================== -->
+  <!-- GITHUB PAGES STUFF: -->
+
+  <xsl:template name="create-github-pages-documents" as="element(xtlcon:document)+">
+
+    <!-- It seems that GitHub pages needs this setting even when we don't use it. Not sure whether it is actually needed 
+      but it doesn't harm (?): -->
+    <xtlcon:document href-target="_config.yml" mime-type="text/plain">
+      <dummy-root>
+        <xsl:text>theme: jekyll-theme-minimal</xsl:text>
+      </dummy-root>
+    </xtlcon:document>
+    
+    <!-- The CNAME file that takes care of making the site accessible through a clean URL: -->
+    <xtlcon:document href-target="CNAME" mime-type="text/plain">
+      <dummy-root>
+        <xsl:value-of select="$cname"/>
+      </dummy-root>
+    </xtlcon:document>
+
   </xsl:template>
 
   <!-- ================================================================== -->

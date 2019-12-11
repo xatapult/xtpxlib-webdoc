@@ -45,9 +45,11 @@
         <para role="halfbreak"/>
         <xsl:if test="not($is-xtpxlib-generic)">
           <para><emphasis role="bold"><code>xtpxlib</code></emphasis> library - component <emphasis role="bold"
-              ><code>{$component-name}</code></emphasis> - v{$current-release/@version} {$current-release/@date}</para>
+              ><code>{$component-name}</code></emphasis> - <emphasis role="bold">v{$current-release/@version}</emphasis>
+            ({$current-release/@date})</para>
         </xsl:if>
-        <para xsl:expand-text="false">{$owner-company-name} - <link role="newpage" xlink:href="{{$owner-company-website}}"/> - {$owner-company-phone}</para>
+        <para xsl:expand-text="false">{$owner-company-name} - <link role="newpage" xlink:href="{{$owner-company-website}}"/> -
+          {$owner-company-phone}</para>
         <para xsl:expand-text="false">{$author-name} - <link xlink:href="mailto:{{$author-email-address}}">{$author-email-address}</link></para>
       </sidebar>
       <para role="halfbreak"/>

@@ -11,7 +11,7 @@
 
 ## Technical information
 
-Component version: V0.9.A - 2019-12-10
+Component version: V1.0 - 2019-12-18
 
 Documentation: [`https://www.xtpxlib.org`](https://www.xtpxlib.org)
 
@@ -24,7 +24,11 @@ This component depends on:
 
 ## Version history
 
-**V0.9.A - 2019-12-10 (current)**
+**V1.0 - 2019-12-18 (current)**
+
+Initial release
+
+**V0.9.A - 2019-12-10**
 
 Pre-release of `xtpxlib-webdoc` (added GitHub pages details).
 

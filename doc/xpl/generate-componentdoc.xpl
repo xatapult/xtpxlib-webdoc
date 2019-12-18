@@ -39,7 +39,7 @@
       <p:with-option name="href" select="$href-source"/>
     </p:load>
     <xdoc:xdoc-to-pdf>
-      <p:with-option name="dref-pdf" select="$href-output"/>
+      <p:with-option name="href-pdf" select="$href-output"/>
     </xdoc:xdoc-to-pdf>
     <p:sink/>
 

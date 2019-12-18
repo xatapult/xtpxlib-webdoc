@@ -253,9 +253,7 @@
   <p:identity name="docbook-contents"/>
 
   <!-- Now create the XHTML version: -->
-  <xdoc:docbook-to-xhtml>
-    <p:with-option name="create-header" select="true()"/>
-  </xdoc:docbook-to-xhtml>
+  <xdoc:docbook-to-xhtml/>
 
   <!-- Create an xtpxlib-container structure for writing the XHTML results:. -->
   <!-- WARNING: This assumes there are no double titles. Normally this won't be the case because all prefaces/chapters/appendices 
@@ -322,7 +320,7 @@
     <p:input port="source">
       <p:pipe port="result" step="docbook-contents"/>
     </p:input>
-    <p:with-option name="dref-pdf" select="$pdf-absolute-href"/>
+    <p:with-option name="href-pdf" select="$pdf-absolute-href"/>
     <p:with-option name="global-resources-directory" select="$full-global-resources-directory"/>
   </xdoc:docbook-to-pdf>
   <p:sink/>

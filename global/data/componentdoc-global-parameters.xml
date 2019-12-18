@@ -13,7 +13,9 @@
       ../../transforms/generate-components-list.xsl
     -->
     <value>xtpxlib-common</value>
-   
+    <value>xtpxlib-container</value>
+    <value>xtpxlib-xoffice</value>
+    <value>xtpxlib-xdoc</value>
   </parameter>
   
   <parameter name="owner-company-name">

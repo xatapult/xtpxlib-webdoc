@@ -27,8 +27,12 @@
 
     <para><emphasis role="bold"><code>xtpxlib</code></emphasis> is an open source library containing software for processing XML, using languages like
       XSLT and XProc. It consists of several separate components, all named <code>xtpxlib-*</code>. Everything can be found on GitHub (<link
-        role="newpage" xlink:href="{$owner-company-git-site-uri}"/>). See its <link linkend="description">description</link> for more
-      information.</para>
+        role="newpage" xlink:href="{$owner-company-git-site-uri}"/>). See its <link linkend="description">description</link> for more information.
+      Installation and usage instructions can be found <link linkend="chapter-usage">here</link>.</para>
+
+    <para role="keep-with-next" xml:id="components-overview">The <!--<emphasis role="bold"><code>xtpxlib</code></emphasis>--> {$library-name}
+      currently consists of the following components:</para>
+    <xdoc:transform href="../../transforms/generate-components-list.xsl" global-parameters-uri="../../global/data/componentdoc-global-parameters.xml"/>
 
     <!--<xdoc:dump-parameters type="table"/>-->
 
@@ -39,14 +43,64 @@
   <chapter xml:id="description">
     <title>Description</title>
 
-    <para role="keep-with-next">The <!--<emphasis role="bold"><code>xtpxlib</code></emphasis>--> {$library-name} currently consists of the following components:</para>
-    <xdoc:transform href="../../transforms/generate-components-list.xsl" global-parameters-uri="../../global/data/componentdoc-global-parameters.xml"/>
+    <para>The <emphasis role="bold"><code>xtpxlib</code></emphasis> library is an open source library containing software for processing XML, using
+      languages like XSLT and XProc. It consists of several separate <link linkend="components-overview">components</link>. I've tried to document
+      everything on the accompanying GitHub pages.</para>
+    <para>Some highlights (the parts I use most often):</para>
+
+    <itemizedlist>
+
+      <listitem>
+        <para>The <code><link xlink:href="https://common.xtpxlib.org">xtpxlib-common</link></code> component contains several <link
+            xlink:href="https://common.xtpxlib.org/2_XSLT_Modules.html">XSLT modules</link>. For instance:</para>
+        <itemizedlist>
+          <listitem>
+            <para><code><link xlink:href="https://common.xtpxlib.org/2_XSLT_Modules.html#general.mod.xsl">general.mod.xsl</link></code> contains a lot
+              of small utility functions and templates. For instance capitalize a string, safe conversions from strings to other data types,
+              etc.</para>
+          </listitem>
+          <listitem>
+            <para><code><link xlink:href="https://common.xtpxlib.org/2_XSLT_Modules.html#href.mod.xsl">href.mod.xsl</link></code> is a library I use
+              very often. It contains all kinds of href (filename or web address) juggling functions. For instance get the name/extension/path portion
+              of an href, get/replace/delete its protocol, canonicalize an href (replace the <code>.</code> and <code>..</code> parts, compute
+              relative href-s, etc.</para>
+          </listitem>
+          <listitem>
+            <para><code><link xlink:href="https://common.xtpxlib.org/2_XSLT_Modules.html#parameters.mod.xsl">parameters.mod.xsl</link></code> contains
+              code for the general handling of parameters and the substitution of parameter values in texts. There is a separate <code><link
+                  xlink:href="https://common.xtpxlib.org/1_Description.html#parameters-explanation">parameters documentation section</link></code>
+              about this.</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+
+      <listitem>
+        <para>The <code><link xlink:href="https://container.xtpxlib.org/"/></code> component contains code for handling <emphasis>XML
+            containers</emphasis>: Constructs that provide support for working with multiple related files by wrapping them into a single one. Binary
+          files are referenced instead of included. Also a very useful technique if you need to create a lot of files (like when you're generating a
+          website).</para>
+      </listitem>
+
+      <listitem>
+        <para>The <code><link xlink:href="https://xoffice.xtpxlib.org/"/></code> component contains an <code><link
+              xlink:href="https://xoffice.xtpxlib.org/2_XProc_Libraries.html#excel.mod.xpl">XProc pipeline</link></code> for turning Excel sheets into
+          much more legible and processable XML. This allows Excel to be used as a user interface to data-driven XML applications.</para>
+      </listitem>
+
+      <listitem>
+        <para>The <code><link xlink:href="https://xdoc.xtpxlib.org/">xtpxlib-xdoc</link></code> component contains a <code><link
+              xlink:href="https://xdoc.xtpxlib.org/1_Description.html#sect-main-toolchain">toolchain</link></code> for DocBook driven documentation.
+          Among its functionality are <code><link xlink:href="https://xdoc.xtpxlib.org/4_XProc_Pipelines.html">pipelines</link></code> with mechanisms
+          for generating DocBook from other markup. It also contains custom PDF and HTML generating.</para>
+      </listitem>
+
+    </itemizedlist>
 
   </chapter>
 
   <!-- ================================================================== -->
 
-  <chapter>
+  <chapter xml:id="chapter-usage">
     <title>Usage</title>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -54,7 +108,12 @@
     <sect1>
       <title>Installing <emphasis role="bold"><code>xtpxlib</code></emphasis> components</title>
 
-      <para>To install an <emphasis role="bold"><code>xtpxlib</code></emphasis> component you can do one of the following:</para>
+      <para>To install an <emphasis role="bold"><code>xtpxlib</code></emphasis> component, first go to its documentation home page to find details
+        about where it is on GitHub and the Git URI you need for cloning it:</para>
+      <xdoc:transform href="../../transforms/generate-components-list.xsl"
+        global-parameters-uri="../../global/data/componentdoc-global-parameters.xml"/>
+
+      <para>Then do one of the following:</para>
       <itemizedlist>
         <listitem>
           <para>Clone its GitHub repository to some appropriate location on disk. The <code>master</code> branch will always contain the latest stable
@@ -78,15 +137,16 @@
 
       <itemizedlist>
         <listitem>
-          <para>To run the XProc pipelines use <link role="newpage" xlink:href="https://xmlcalabash.com/">XML&#160;Calabash</link> Xproc 1.0
-            processor. This library uses several of its non-standard extensions, another XProc processor is therefore probably not usable.</para>
+          <para>To run the XProc pipelines use the <link role="newpage" xlink:href="https://xmlcalabash.com/">XML&#160;Calabash</link> Xproc 1.0
+            processor. The <code>xtpxlib</code> library uses several of its non-standard extensions, another XProc processor is therefore not
+            (directly) usable.</para>
         </listitem>
         <listitem>
           <para>To run XSLT stylesheets the <link role="newpage" xlink:href="http://www.saxonica.com">Saxon</link> processor is preferred. In most
             cases the (open source) HE (Home Edition) version will be sufficient. If not a PE (Professional Edition) license is necessary.</para>
         </listitem>
         <listitem>
-          <para>As an alternative run the software from within the <link role="newpage" xlink:href="https://www.oxygenxml.com">oXygen XML</link>
+          <para>As an alternative, run the software from within the <link role="newpage" xlink:href="https://www.oxygenxml.com">oXygen XML</link>
             IDE.</para>
         </listitem>
       </itemizedlist>

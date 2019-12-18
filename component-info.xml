@@ -10,6 +10,9 @@
   <!-- ================================================================== -->
 
   <releases>
+    <release version="1.0" date="2019-12-18">
+      Initial release
+    </release>
     <release version="0.9.A" date="2019-12-10">
       Pre-release of `xtpxlib-webdoc` (added GitHub pages details).
     </release>
@@ -31,7 +34,7 @@
     * Some internal scripts and documentation for publishing and releasing components.
   </summary>
   
-  <documentation-uri>http://www.xtpxlib.org</documentation-uri>
+  <documentation-uri>https://www.xtpxlib.org</documentation-uri>
 
   <git-uri>git@github.com:xatapult/xtpxlib-webdoc.git</git-uri>
   <git-site-uri>https://github.com/xatapult/xtpxlib-webdoc</git-site-uri>

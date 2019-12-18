@@ -54,8 +54,8 @@
       </listitem>
 
       <listitem>
-        <para>Git-flow start a <emphasis>new release</emphasis> and give it the version number as release name, prefixed with a lower-case
-            <code>v</code> (so, for instance, <code>v1.0</code> or <code>v2.3.B</code>).</para>
+        <para>Git-flow start a <emphasis>new release</emphasis> (Git-flow; New Release) and give it the version number as release name, prefixed with
+          a lower-case <code>v</code> (so, for instance, <code>v1.0</code> or <code>v2.3.B</code>).</para>
       </listitem>
 
       <listitem>
@@ -86,11 +86,33 @@
       </listitem>
 
       <listitem>
-        <para>Finish the release (Git-flow ...TBD) and tag it the same as the release name (lower-case <code>v</code> with version number,
-            <code>vx.y</code>).</para>
-        <para>TBD: Auto commit/push???</para>
+        <para>Git-flow finish the release (Git-flow; Finish Release) and tag it the same as the release name (lower-case <code>v</code> with version
+          number, <code>vx.y</code>). Optionally add some description after this, for example like in <code>vx.y - Bla bla bla</code></para>
+        <para>Make it easy on yourself, check <emphasis>Push changes to remote</emphasis>.</para>
       </listitem>
+
     </orderedlist>
+
+  </sect1>
+
+  <!-- ================================================================== -->
+
+  <sect1>
+    <title>Important remarks</title>
+
+    <itemizedlist>
+      <listitem>
+        <para>When adding a new component, update the list of active components in <code>global/data/componentdoc-global-parameters.xml</code> and
+          re-release the <code>xtpxlib-webdoc</code> component.</para>
+      </listitem>
+
+      <listitem>
+        <para>For a new component don't forget to add the correct CNAME record to the DNS (must <code>CNAME</code> point to
+            <code>xatapult.github.io.</code>)</para>
+      </listitem>
+
+    </itemizedlist>
+
   </sect1>
 
 </article>

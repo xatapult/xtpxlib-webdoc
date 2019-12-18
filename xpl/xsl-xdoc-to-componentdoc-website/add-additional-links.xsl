@@ -52,7 +52,7 @@
           <li>
             <a href="{$href-index-document}">home</a>
           </li>
-          <xsl:for-each select="/*/xtlcon:document[not(xs:boolean(@index))]">
+          <xsl:for-each select="/*/xtlcon:document[not(xs:boolean(@index))][xs:boolean(@is-page)]">
             <xsl:variable name="href" as="xs:string" select="@href-target"/>
             <li>
               <a href="{$href}">

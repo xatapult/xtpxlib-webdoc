@@ -36,7 +36,7 @@
 
   <xsl:variable name="markdown-line" as="xs:string" select="'----------'"/>
   
-  <!-- Get the component dependy information: -->
+  <!-- Get the component dependency information: -->
   <xsl:variable name="dependent-component-information" as="map(xs:string, element(xwebdoc:component-info))"
     select="xwebdoc:get-dependent-component-information($component-name)"/>
   <xsl:variable name="component-dependency-lines" as="xs:string*">
@@ -63,6 +63,27 @@
     </xsl:for-each>
   </xsl:variable>
   <xsl:variable name="version-history-part" as="xs:string" select="string-join($version-history-lines, '&#x0a;')"/>
+  
+  <!-- Get info about the owner company: -->
+  <xsl:variable name="owner-company" as="xs:string?" select="$global-parameters?owner-company-name"/>
+  <xsl:variable name="owner-website" as="xs:string?" select="$global-parameters?owner-company-website"/>
+  <xsl:variable name="owner-part" as="xs:string?">
+    <xsl:choose>
+      <xsl:when test="exists($owner-company) and exists($owner-website)">
+        <xsl:sequence select="'**' || $owner-company || ' - ' || local:siteref($owner-website) || '**'"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:sequence select="()"/>
+      </xsl:otherwise>  
+    </xsl:choose>
+  </xsl:variable>
+  
+  <xsl:variable name="library-name" as="xs:string?" select="$global-parameters?library-name"/>
+  <xsl:variable name="title-part" as="xs:string">
+    <xsl:sequence select="'# ' || local:code($component-name) || ': ' ||
+      (if (exists($library-name)) then ($library-name || ' - ') else ()) || $component-information/xwebdoc:title"/>
+  </xsl:variable>
+  
 
   <!-- ================================================================== -->
   <!-- MAIN TEMPLATES: -->
@@ -70,9 +91,9 @@
   <xsl:template match="/">
 
 
-    <README xml:space="preserve"># {local:code($component-name)}: {$global-parameters?library-name} - {$component-information/xwebdoc:title}
+    <README xml:space="preserve">{$title-part}
 
-**{$global-parameters?owner-company-name} - {local:siteref($global-parameters?owner-company-website)}**
+{$owner-part}
 
 {$markdown-line} 
 
@@ -102,22 +123,22 @@ Git site: {local:siteref($component-information/xwebdoc:git-site-uri)}
   <!-- SUPPORT: -->
 
   <xsl:function name="local:code" as="xs:string">
-    <xsl:param name="in" as="xs:string"/>
+    <xsl:param name="in" as="xs:string?"/>
     <xsl:sequence select="'`' || $in || '`'"/>
   </xsl:function>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
   <xsl:function name="local:siteref" as="xs:string">
-    <xsl:param name="uri" as="xs:string"/>
+    <xsl:param name="uri" as="xs:string?"/>
     <xsl:sequence select="local:siteref($uri, $uri)"/>
   </xsl:function>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
   <xsl:function name="local:siteref" as="xs:string">
-    <xsl:param name="name" as="xs:string"/>
-    <xsl:param name="uri" as="xs:string"/>
+    <xsl:param name="name" as="xs:string?"/>
+    <xsl:param name="uri" as="xs:string?"/>
     <xsl:sequence select="'[' || local:code($name) || '](' || $uri || ')'"/>
   </xsl:function>
   

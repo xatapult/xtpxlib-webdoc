@@ -191,7 +191,7 @@
     </p:choose>
 
   </p:declare-step>
-  
+
   <!-- ================================================================== -->
   <!-- MAIN PIPELINE: -->
 
@@ -204,6 +204,7 @@
   <p:variable name="full-resources-source-directory" select="resolve-uri($resources-subdirectory, $base-uri-source-document)"/>
   <p:variable name="full-output-directory" select="resolve-uri($output-directory, $base-uri-source-document)"/>
   <p:variable name="full-resources-target-directory" select="string-join(($full-output-directory, $resources-subdirectory), '/')"/>
+  <p:variable name="href-parameters-merged-temp" select="string-join(($full-output-directory, 'merged-parameters-temp.xml'), '/')"/>
 
   <!-- Provide sensible defaults for some global files/directories. This must be done here due to a Calabash bug (?) in the
     static-base-uri() handling. -->
@@ -236,7 +237,6 @@
 
   <!-- We're going to write a temporary new parameters document to the output directory 
     (it is deleted later when the output directory is overwritten): -->
-  <p:variable name="href-parameters-merged-temp" select="string-join(($full-output-directory, 'merged-parameters-temp.xml'), '/')"/>
   <local:merge-parameters-and-version-information>
     <p:with-option name="component-name" select="$component-name"/>
     <p:with-option name="component-display-name" select="$component-display-name-to-use"/>
@@ -348,12 +348,12 @@
   <p:add-attribute attribute-name="pdf" match="/*">
     <p:with-option name="attribute-value" select="$pdf-absolute-href"/>
   </p:add-attribute>
-  
+
   <!-- Generate a readme file (if any): -->
   <xwebdoc:generate-readme>
     <p:with-option name="href-readme" select="$href-readme"/>
     <p:with-option name="component-name" select="$component-name"/>
-    <p:with-option name="href-global-parameters" select="$full-href-global-parameters"/> 
+    <p:with-option name="href-global-parameters" select="$full-href-global-parameters"/>
   </xwebdoc:generate-readme>
 
   <!-- Final cleanup: -->

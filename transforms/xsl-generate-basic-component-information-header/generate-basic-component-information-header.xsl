@@ -38,7 +38,8 @@
           <title/>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="resources/logo-xatapult.jpg" width="15%"/>
+              <!--<imagedata fileref="resources/logo-xatapult.jpg" width="15%"/>-->
+              <imagedata fileref="resources/logo-xtpxlib.png" />
             </imageobject>
           </mediaobject>
         </figure>

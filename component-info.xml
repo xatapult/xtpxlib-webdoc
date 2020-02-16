@@ -10,6 +10,9 @@
   <!-- ================================================================== -->
 
   <releases>
+    <release version="1.1" date="2020-02-16">
+      New logo and minor text changes
+    </release>
     <release version="1.0" date="2019-12-18">
       Initial release
     </release>
@@ -23,7 +26,8 @@
 
   <dependencies>
     <component name="xtpxlib-common"/>
-    <!-- TBD: As soon as xdoc and container are public as well, mention them here! -->
+    <component name="xtpxlib-container"/>
+    <component name="xtpxlib-xdoc"/>
   </dependencies>
 
   <title>Common website + GitHub pages generator software</title>

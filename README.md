@@ -11,7 +11,7 @@
 
 ## Technical information
 
-Component version: V1.0 - 2019-12-18
+Component version: V1.1 - 2020-02-16
 
 Documentation: [`https://www.xtpxlib.org`](https://www.xtpxlib.org)
 
@@ -20,11 +20,17 @@ Git URI: `git@github.com:xatapult/xtpxlib-webdoc.git`
 Git site: [`https://github.com/xatapult/xtpxlib-webdoc`](https://github.com/xatapult/xtpxlib-webdoc)
       
 This component depends on:
+* [`xtpxlib-xdoc`](https://xdoc.xtpxlib.org) (DocBook publication toolchain)
+* [`xtpxlib-container`](https://container.xtpxlib.org) (Support for XML containers (multiple files wrapped into one))
 * [`xtpxlib-common`](https://common.xtpxlib.org) (Common component: Shared libraries and IDE support)
 
 ## Version history
 
-**V1.0 - 2019-12-18 (current)**
+**V1.1 - 2020-02-16 (current)**
+
+New logo and minor text changes
+
+**V1.0 - 2019-12-18**
 
 Initial release
 

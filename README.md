@@ -11,7 +11,7 @@
 
 ## Technical information
 
-Component version: V1.1 - 2020-02-16
+Component version: V1.2 - 2020-10-15
 
 Documentation: [`https://www.xtpxlib.org`](https://www.xtpxlib.org)
 
@@ -26,7 +26,11 @@ This component depends on:
 
 ## Version history
 
-**V1.1 - 2020-02-16 (current)**
+**V1.2 - 2020-10-15 (current)**
+
+Generate release information on main doc page.
+
+**V1.1 - 2020-02-16**
 
 New logo and minor text changes
 

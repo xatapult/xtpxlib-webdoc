@@ -26,6 +26,9 @@
 
   <xsl:variable name="component-information" as="element(xwebdoc:component-info)" select="xwebdoc:get-component-info($component-name)"/>
   <xsl:variable name="current-release" as="element(xwebdoc:release)" select="($component-information/xwebdoc:releases/xwebdoc:release)[1]"/>
+  
+  <!-- Do not show more than this number of release entries: -->
+  <xsl:variable name="release-entries-max" as="xs:integer" select="5"/>
 
   <!-- ================================================================== -->
 
@@ -39,7 +42,7 @@
           <mediaobject>
             <imageobject>
               <!--<imagedata fileref="resources/logo-xatapult.jpg" width="15%"/>-->
-              <imagedata fileref="resources/logo-xtpxlib.png" />
+              <imagedata fileref="resources/logo-xtpxlib.png"/>
             </imageobject>
           </mediaobject>
         </figure>
@@ -71,6 +74,7 @@
               xlink:href="{$main-documentation-uri}"/>.</para>
         </xsl:if>
 
+        <!-- Technical information: -->
         <bridgehead>Technical information:</bridgehead>
         <xsl:variable name="documentation-uri" as="xs:string?" select="$component-information/xwebdoc:documentation-uri"/>
         <xsl:if test="exists($documentation-uri)">
@@ -80,6 +84,25 @@
         <para>Git URI: <code>{$component-information/xwebdoc:git-uri}</code></para>
         <para>Git site: <link role="newpage" xlink:href="{$component-information/xwebdoc:git-site-uri}"/></para>
         <xsl:call-template name="generate-dependency-info"/>
+
+        <!-- Release information: -->
+        <bridgehead>Release information:</bridgehead>
+      <xsl:variable name="releases" as="element(xwebdoc:release)*" select="$component-information/xwebdoc:releases/xwebdoc:release"/>
+        <variablelist>
+          <xsl:for-each select="$releases[position() le $release-entries-max]">
+            <varlistentry>
+              <term>v{@version} - {@date} {if (position() eq 1) then '(current)' else ()}</term>
+              <listitem>
+                <xdoc:MARKDOWN>{.}</xdoc:MARKDOWN>
+              </listitem>
+            </varlistentry>
+          </xsl:for-each>
+        </variablelist>
+        
+        <xsl:if test="count($releases) gt $release-entries-max">
+          <para>(Abbreviated. Full release information in <code>README.md</code>.)</para>
+        </xsl:if>
+        
       </xsl:if>
 
     </xdoc:GROUP>

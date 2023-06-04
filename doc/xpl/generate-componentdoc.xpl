@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:xwebdoc="http://www.xtpxlib.nl/ns/webdoc" xmlns:xdoc="http://www.xtpxlib.nl/ns/xdoc"
-  xmlns:local="#local" version="1.0" xpath-version="2.0" exclude-inline-prefixes="#all">
+<p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:xwebdoc="http://www.xtpxlib.nl/ns/webdoc"
+  xmlns:xdoc="http://www.xtpxlib.nl/ns/xdoc" xmlns:local="#local" version="1.0" xpath-version="2.0"
+  exclude-inline-prefixes="#all">
 
   <p:documentation>
     Pipeline to create the documentation for this component.
@@ -22,7 +23,11 @@
   <p:declare-step type="local:create-pdf" name="local-create-pdf">
 
     <!-- Pass through: -->
-    <p:input port="source" primary="true"/>
+    <p:input port="source" primary="true">
+      <p:inline>
+        <dummy/>
+      </p:inline>
+    </p:input>
     <p:output port="result" primary="true">
       <p:pipe port="source" step="local-create-pdf"/>
     </p:output>
@@ -40,6 +45,8 @@
     </p:load>
     <xdoc:xdoc-to-pdf>
       <p:with-option name="href-pdf" select="$href-output"/>
+      <p:with-option name="href-xsl-fo" select="resolve-uri('../../tmp/webdoc-xsl-fo.xml', static-base-uri())"/>
+      <p:with-option name="href-docbook" select="resolve-uri('../../tmp/webdoc-docbook.xml', static-base-uri())"/>
     </xdoc:xdoc-to-pdf>
     <p:sink/>
 
@@ -47,7 +54,8 @@
 
   <!-- ================================================================== -->
 
-  <p:variable name="href-parameters" select="resolve-uri('../data/xtpxlib-componentdoc-parameters.xml', static-base-uri())"/>
+  <p:variable name="href-parameters"
+    select="resolve-uri('../data/xtpxlib-componentdoc-parameters.xml', static-base-uri())"/>
   <p:variable name="output-directory" select="resolve-uri('../../docs/', static-base-uri())"/>
   <p:variable name="href-readme" select="resolve-uri('../../README.md', static-base-uri())"/>
 
@@ -62,10 +70,10 @@
     <p:with-option name="output-directory" select="$output-directory"/>
     <p:with-option name="href-readme" select="$href-readme"/>
   </xwebdoc:xdoc-to-componentdoc-website>
-  
+
   <local:create-pdf>
-    <p:with-option name="href-source" select="resolve-uri('../source/howto-release.xml', static-base-uri())"/> 
-    <p:with-option name="base-output-directory" select="$output-directory"/> 
+    <p:with-option name="href-source" select="resolve-uri('../source/howto-release.xml', static-base-uri())"/>
+    <p:with-option name="base-output-directory" select="$output-directory"/>
   </local:create-pdf>
 
 </p:declare-step>

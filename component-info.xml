@@ -10,6 +10,9 @@
   <!-- ================================================================== -->
 
   <releases>
+    <release version="2.0" date="2023-07-11">
+      Added XProc 3.0 support.
+    </release>
     <release version="1.2" date="2020-10-15">
       Generate release information on main doc page.
     </release>

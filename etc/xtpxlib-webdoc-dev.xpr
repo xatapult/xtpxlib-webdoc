@@ -340,5 +340,6 @@
         <folder path="../../xtpxlib-container/"/>
         <folder path="../"/>
         <folder path="../../xtpxlib-xdoc/"/>
+        <folder path="../../../../../../xdata/"/>
     </projectTree>
 </project>

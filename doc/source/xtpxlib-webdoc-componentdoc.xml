@@ -25,10 +25,10 @@
 
     <xdoc:transform href="../../transforms/generate-basic-component-information-header.xpl" component-name="xtpxlib-webdoc" xtpxlib-generic="true"/>
 
-    <para><emphasis role="bold"><code>xtpxlib</code></emphasis> is an open source library containing software for processing XML, using languages like
-      XSLT and XProc. It consists of several separate components, all named <code>xtpxlib-*</code>. Everything can be found on GitHub (<link
-        role="newpage" xlink:href="{$owner-company-git-site-uri}"/>). See its <link linkend="description">description</link> for more information.
-      Installation and usage instructions can be found <link linkend="chapter-usage">here</link>.</para>
+    <para><emphasis role="bold"><code>xtpxlib</code></emphasis> is an open source library containing software for processing XML, using XSLT (*2.0 and
+      3.0) and XProc (1.0 and 3.0). It consists of several separate components, all named <code>xtpxlib-*</code>. Everything can be found on GitHub
+        (<link role="newpage" xlink:href="{$owner-company-git-site-uri}"/>). See its <link linkend="description">description</link> for more
+      information. Installation and usage instructions can be found <link linkend="chapter-usage">here</link>.</para>
 
     <para role="keep-with-next" xml:id="components-overview">The <!--<emphasis role="bold"><code>xtpxlib</code></emphasis>--> {$library-name}
       currently consists of the following components:</para>
@@ -132,24 +132,38 @@
     <sect1>
       <title>Running <emphasis role="bold"><code>xtpxlib</code></emphasis> components</title>
 
-      <para><emphasis role="bold"><code>xtpxlib</code></emphasis> consists mainly of XProc (1.0) pipelines and XSLT (2.0 and 3.0) stylesheets. To run
+      <para><emphasis role="bold"><code>xtpxlib</code></emphasis> consists of XSLT (2.0 and 3.0) stylesheets and XProc (1.0 and 3.0) pipelines. To run
         these you'll need:</para>
 
       <itemizedlist>
+
         <listitem>
-          <para>To run the XProc pipelines use the <link role="newpage" xlink:href="https://xmlcalabash.com/">XML&#160;Calabash</link> Xproc 1.0
-            processor. The <code>xtpxlib</code> library uses several of its non-standard extensions, another XProc processor is therefore not
-            (directly) usable.</para>
-        </listitem>
-        <listitem>
-          <para>To run XSLT stylesheets the <link role="newpage" xlink:href="http://www.saxonica.com">Saxon</link> processor is preferred. In most
-            cases the (open source) HE (Home Edition) version will be sufficient. If not a PE (Professional Edition) license is necessary.</para>
-        </listitem>
-        <listitem>
+          <para><emphasis role="bold">XSLT:</emphasis></para>
+          <para>To run XSLT stylesheets, the <link role="newpage" xlink:href="http://www.saxonica.com">Saxon</link> processor is preferred. In most
+            cases the (open source) HE (Home Edition) version will be sufficient. </para>
           <para>As an alternative, run the software from within the <link role="newpage" xlink:href="https://www.oxygenxml.com">oXygen XML</link>
             IDE.</para>
         </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">XProc 1.0:</emphasis></para>
+          <para>To run the XProc 1.0 pipelines, use the <link role="newpage" xlink:href="https://xmlcalabash.com/">XML&#160;Calabash</link> Xproc 1.0
+            processor. The <code>xtpxlib</code> library uses several of its non-standard extensions, another XProc processor is therefore not
+            (directly) usable.</para>
+          <para>As an alternative, run the software from within the <link role="newpage" xlink:href="https://www.oxygenxml.com">oXygen XML</link>
+            IDE.</para>
+          <para><emphasis>WARNING:</emphasis> The XProc 1.0 pipelines are no longer actively maintained.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">XProc 3.0:</emphasis></para>
+          <para>To run the XProc 3.0 pipelines, use the <link role="newpage" xlink:href="https://www.xml-project.com/morganaxproc-iiise.html"
+              >MorganaXProc-III</link> processor. For some of the more advanced pipelines (mainly the ones in <code>xtpxlib-xdoc</code>) you need the
+            EE version, for which a license is required.</para>
+        </listitem>
+        
       </itemizedlist>
+
     </sect1>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<p:declare-step xmlns:xdoc="http://www.xtpxlib.nl/ns/xdoc" xmlns:p="http://www.w3.org/ns/xproc" xmlns:c="http://www.w3.org/ns/xproc-step"
-  xmlns:local="#local" xmlns:xtlcon="http://www.xtpxlib.nl/ns/container" xmlns:xtlc="http://www.xtpxlib.nl/ns/common"
-  xmlns:xwebdoc="http://www.xtpxlib.nl/ns/webdoc" version="1.0" xpath-version="2.0" exclude-inline-prefixes="#all"
-  type="xwebdoc:xdoc-to-componentdoc-website">
+<p:declare-step xmlns:xdoc="http://www.xtpxlib.nl/ns/xdoc" xmlns:p="http://www.w3.org/ns/xproc"
+  xmlns:c="http://www.w3.org/ns/xproc-step" xmlns:local="#local" xmlns:xtlcon="http://www.xtpxlib.nl/ns/container"
+  xmlns:xtlc="http://www.xtpxlib.nl/ns/common" xmlns:xwebdoc="http://www.xtpxlib.nl/ns/webdoc" version="1.0"
+  xpath-version="2.0" exclude-inline-prefixes="#all" type="xwebdoc:xdoc-to-componentdoc-website">
 
   <p:documentation>
      Creates a documentation website for a component from an xdoc book style document.
@@ -201,23 +201,23 @@
   <p:variable name="base-uri-source-document" select="base-uri(/)"/>
   <p:variable name="full-href-parameters"
     select="if (normalize-space($href-parameters) eq '') then () else resolve-uri($href-parameters, $base-uri-source-document)"/>
-  <p:variable name="full-resources-source-directory" select="resolve-uri($resources-subdirectory, $base-uri-source-document)"/>
+  <p:variable name="full-resources-source-directory"
+    select="resolve-uri($resources-subdirectory, $base-uri-source-document)"/>
   <p:variable name="full-output-directory" select="resolve-uri($output-directory, $base-uri-source-document)"/>
-  <p:variable name="full-resources-target-directory" select="string-join(($full-output-directory, $resources-subdirectory), '/')"/>
-  <p:variable name="href-parameters-merged-temp" select="string-join(($full-output-directory, 'merged-parameters-temp.xml'), '/')"/>
+  <p:variable name="full-resources-target-directory"
+    select="string-join(($full-output-directory, $resources-subdirectory), '/')"/>
+  <p:variable name="href-parameters-merged-temp"
+    select="string-join(($full-output-directory, 'merged-parameters-temp.xml'), '/')"/>
 
   <!-- Provide sensible defaults for some global files/directories. This must be done here due to a Calabash bug (?) in the
     static-base-uri() handling. -->
-  <p:variable name="full-href-global-parameters"
-    select="if (normalize-space($href-global-parameters) eq '') 
+  <p:variable name="full-href-global-parameters" select="if (normalize-space($href-global-parameters) eq '') 
       then resolve-uri('../global/data/componentdoc-global-parameters.xml', static-base-uri()) 
       else resolve-uri($href-global-parameters, $base-uri-source-document)"/>
-  <p:variable name="full-global-resources-directory"
-    select="if (normalize-space($global-resources-directory) eq '') 
+  <p:variable name="full-global-resources-directory" select="if (normalize-space($global-resources-directory) eq '') 
       then resolve-uri('../global/resources/', static-base-uri())
       else resolve-uri($global-resources-directory, $base-uri-source-document)"/>
-  <p:variable name="full-href-template"
-    select="if (normalize-space($href-template) eq '') 
+  <p:variable name="full-href-template" select="if (normalize-space($href-template) eq '') 
       then resolve-uri('../global/data/componentdoc-website-template.html', static-base-uri()) 
       else resolve-uri($href-template, $base-uri-source-document)"/>
 
@@ -226,7 +226,8 @@
     select="if (normalize-space($component-display-name) eq '') then $component-name else $component-display-name"/>
 
   <!-- Definitions for the PDF version: -->
-  <p:variable name="pdf-filename" select="concat(replace($component-display-name-to-use, '[^A-Za-z0-9\-.]', '_'), '-documentation.pdf')"/>
+  <p:variable name="pdf-filename"
+    select="concat(replace($component-display-name-to-use, '[^A-Za-z0-9\-.]', '_'), '-documentation.pdf')"/>
   <p:variable name="pdf-relative-href" select="string-join(($resources-subdirectory, $pdf-filename), '/')"/>
   <p:variable name="pdf-absolute-href" select="string-join(($full-output-directory, $pdf-relative-href), '/')"/>
 
@@ -321,6 +322,11 @@
       <p:pipe port="result" step="docbook-contents"/>
     </p:input>
     <p:with-option name="href-pdf" select="$pdf-absolute-href"/>
+    <!-- THIS IS WRONG. But is a quick hack for a bug that crept up.
+         I would not recommend writing into code repo's, even not in the tmp directory.
+         But given we will soon switch to XProc 3, this is ok for now (?).
+    -->
+    <p:with-option name="href-xsl-fo" select="resolve-uri('../tmp/componentdoc-fo.xml', static-base-uri())"/>
     <p:with-option name="global-resources-directory" select="$full-global-resources-directory"/>
   </xdoc:docbook-to-pdf>
   <p:sink/>

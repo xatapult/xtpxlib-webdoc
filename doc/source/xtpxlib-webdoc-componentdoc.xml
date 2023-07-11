@@ -25,7 +25,7 @@
 
     <xdoc:transform href="../../transforms/generate-basic-component-information-header.xpl" component-name="xtpxlib-webdoc" xtpxlib-generic="true"/>
 
-    <para><emphasis role="bold"><code>xtpxlib</code></emphasis> is an open source library containing software for processing XML, using XSLT (*2.0 and
+    <para><emphasis role="bold"><code>xtpxlib</code></emphasis> is an open source library containing software for processing XML, using XSLT (2.0 and
       3.0) and XProc (1.0 and 3.0). It consists of several separate components, all named <code>xtpxlib-*</code>. Everything can be found on GitHub
         (<link role="newpage" xlink:href="{$owner-company-git-site-uri}"/>). See its <link linkend="description">description</link> for more
       information. Installation and usage instructions can be found <link linkend="chapter-usage">here</link>.</para>

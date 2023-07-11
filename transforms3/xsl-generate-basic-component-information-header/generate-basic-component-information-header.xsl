@@ -100,7 +100,7 @@
         </variablelist>
         
         <xsl:if test="count($releases) gt $release-entries-max">
-          <para>(Abbreviated. Full release information in <code>README.md</code>.)</para>
+          <para>(Abbreviated. Full release information in <code>README.md</code>)</para>
         </xsl:if>
         
       </xsl:if>

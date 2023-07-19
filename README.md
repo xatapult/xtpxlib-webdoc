@@ -11,7 +11,7 @@
 
 ## Technical information
 
-Component version: V2.0 - 2023-07-11
+Component version: V2.0.1 - 2023-07-19
 
 Documentation: [`https://www.xtpxlib.org`](https://www.xtpxlib.org)
 
@@ -26,7 +26,11 @@ This component depends on:
 
 ## Version history
 
-**V2.0 - 2023-07-11 (current)**
+**V2.0.1 - 2023-07-19 (current)**
+
+Minor documentation updates.
+
+**V2.0 - 2023-07-11**
 
 Added XProc 3.0 support.
 
@@ -52,5 +56,5 @@ Pre-release of `xtpxlib-webdoc` (mainly for testing procedures and the GitHub pa
 
 
 -----------
-*Generated: 2023-07-11 13:22:46*
+*Generated: 2023-07-19 08:47:49*
 

@@ -275,8 +275,7 @@
     }"/>
   </p:xslt>
 
-
-  <p:store href="file:///C:/xdata/container-test/container.xml"/>
+  <!--<p:store href="file:///C:/xdata/container-test/container.xml"/>-->
 
   <!-- Write the result out to disk: -->
   <xtlcon:container-to-disk remove-target="false"/>

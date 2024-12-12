@@ -1,4 +1,5 @@
-# `xtpxlib-webdoc`: Xatapult XML Library - Common website + GitHub pages generator software
+<?xml version="1.0" encoding="UTF-8"?>
+<README xml:space="preserve"># `xtpxlib-webdoc`: Xatapult XML Library - Common website + GitHub pages generator software
 
 **Xatapult Content Engineering - [`http://www.xatapult.com`](http://www.xatapult.com)**
 
@@ -56,5 +57,6 @@ Pre-release of `xtpxlib-webdoc` (mainly for testing procedures and the GitHub pa
 
 
 -----------
-*Generated: 2023-07-19 08:47:49*
+*Generated: 2024-12-12 14:49:38*
 
+</README>

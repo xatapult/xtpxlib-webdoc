@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<README xml:space="preserve"># `xtpxlib-webdoc`: Xatapult XML Library - Common website + GitHub pages generator software
+# `xtpxlib-webdoc`: Xatapult XML Library - Common website + GitHub pages generator software
 
 **Xatapult Content Engineering - [`http://www.xatapult.com`](http://www.xatapult.com)**
 
@@ -12,7 +11,7 @@
 
 ## Technical information
 
-Component version: V3.0 - 2024-12-12
+Component version: V3.1 - 2026-03-17
 
 Documentation: [`https://www.xtpxlib.org`](https://www.xtpxlib.org)
 
@@ -27,7 +26,11 @@ This component depends on:
 
 ## Version history
 
-**V3.0 - 2024-12-12 (current)**
+**V3.1 - 2026-03-17 (current)**
+
+Several small fixes.
+
+**V3.0 - 2024-12-12**
 
 Deprecation of XProc 1.0. Several fixes.
 
@@ -61,6 +64,5 @@ Pre-release of `xtpxlib-webdoc` (mainly for testing procedures and the GitHub pa
 
 
 -----------
-*Generated: 2024-12-12 14:59:52*
+*Generated: 2026-03-17 08:45:14*
 
-</README>

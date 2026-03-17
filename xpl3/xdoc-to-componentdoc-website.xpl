@@ -164,6 +164,7 @@
             'href-global-parameters': $href-global-parameters
           }"/>
       </p:xslt>
+      <p:set-properties properties="map{'serialization': map{} }"></p:set-properties>
       <p:store href="{$href-readme}" serialization="map{'method': 'text'}"/>
     </p:if>
 
